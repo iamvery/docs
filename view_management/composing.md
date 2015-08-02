@@ -15,4 +15,4 @@ The view can also be set explicitly:
 Complex views can also be composed and set. This is done through the `ViewComposer` object. The way composer works is you specify the path you want to compose at, then override any part of the view (e.g. a template, page, or partial).
 
     ruby:
-    presenter.view = compose_at('some/path', template: 'some_other_template')
+    presenter.view = presenter.compose_at('some/path', template: 'some_other_template')
