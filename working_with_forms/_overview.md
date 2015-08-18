@@ -50,7 +50,7 @@ Options can be defined in the bindings, like this:
       end
     end
 
-    view.scope(:post).bind({ :type => :two})
+    view.scope(:post).bind({ type: :two })
 
 Resulting view:
 
@@ -71,7 +71,7 @@ You can also set the first option to empty:
       end
     end
 
-    view.scope(:post).bind({ :type => :two})
+    view.scope(:post).bind({ type: :two })
 
 Resulting view:
 
