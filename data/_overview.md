@@ -1,5 +1,6 @@
 ---
 name: Application Data
+desc: Using object-relational mappers in Pakyow.
 guide: true
 ---
 

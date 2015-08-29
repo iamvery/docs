@@ -1,5 +1,6 @@
 ---
 name: Binding Nested Scopes
+desc: Binding data to a nested scope.
 ---
 
 It's often necessary to have nested scopes in a view. For example, if we're presenting comments for a post we might have the following:

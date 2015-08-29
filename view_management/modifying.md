@@ -1,5 +1,6 @@
 ---
 name: View Modification
+desc: Manipulating Pakyow views from the back-end.
 ---
 
 Views can be modified from back-end code in a number of ways, including:

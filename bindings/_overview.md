@@ -1,5 +1,6 @@
 ---
 name: Data Bindings
+desc: Ammending data during the binding process.
 ---
 
 Bindings can be thought of as functions that route data to the view. They can be used for setting view attributes, formatting data, etc.

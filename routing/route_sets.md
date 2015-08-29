@@ -1,5 +1,6 @@
 ---
 name: Route Sets
+desc: Organizing routes into sets.
 ---
 
 As a Pakyow application grows, so do it's routes. Route sets allow sets of routes to be moved into their own source files. Since Pakyow has no concept of controllers, a good best practice is to use route sets as you would a controller by adding all related routes into a single set.

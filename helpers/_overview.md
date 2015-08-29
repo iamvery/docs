@@ -1,5 +1,6 @@
 ---
 name: Back-End Helpers
+desc: Pakyow helper methods.
 ---
 
 Helper methods are defined in the Pakyow::Helpers module. You can define your own helpers in `app/lib/helpers.rb`:

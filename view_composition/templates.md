@@ -1,5 +1,6 @@
 ---
 name: Templates
+desc: Creating different templates for your Pakyow project.
 ---
 
 A Pakyow template defines one or more containers. Later on in composition, a page will be used that defines content for these containers. Containers are defined with an inline comment:

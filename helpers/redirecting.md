@@ -1,5 +1,6 @@
 ---
 name: Redirecting
+desc: Redirecting a request to a new destination.
 ---
 
 Issuing a browser redirect is easy:

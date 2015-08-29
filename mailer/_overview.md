@@ -1,5 +1,6 @@
 ---
 name: Sending Email
+desc: Sending email from a Pakyow app.
 ---
 
 Pakyow has built-in mechanisms for delivering views through email. The easiest way to user mailers is from a route. Here's a basic example:

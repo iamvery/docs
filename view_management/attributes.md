@@ -1,5 +1,6 @@
 ---
 name: DOM Attributes
+desc: Accessing and setting attributes.
 ---
 
 There are three types of attributes in Pakyow:

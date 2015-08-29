@@ -1,5 +1,6 @@
 ---
 name: Namespacing Routes
+desc: Namespacing similar routes.
 ---
 
 Namespaces make it possible to group routes under a common URI.

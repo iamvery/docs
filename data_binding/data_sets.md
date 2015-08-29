@@ -1,5 +1,6 @@
 ---
 name: Working With Data Sets
+desc: Binding a data set to a view.
 ---
 
 We've seen how Pakyow can bind a single piece of data, but it can also handle

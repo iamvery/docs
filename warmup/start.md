@@ -1,5 +1,6 @@
 ---
 name: Get Moving
+desc: Taking your first steps with Pakyow.
 ---
 
 First, make sure Pakyow is installed. You can find [details here](/docs/getting-started/installation).

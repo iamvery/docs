@@ -1,5 +1,6 @@
 ---
 name: Route Templates
+desc: Defining route templates for reusability.
 ---
 
 Route templates make it possible to create a DSL for aspects of your routes. The built-in [RESTful route handling](/docs/routing#restful) in Pakyow is implemented as a template. It's easiest to understand in practice, so here's the built-in RESTful template for your reference:

@@ -1,5 +1,6 @@
 ---
 name: Traversing Views
+desc: Traversing significant nodes in a Pakyow view.
 ---
 
 Pakyow makes it possible to traverse significant nodes in a view. A significant node is one that has been labeled as a `scope` or `prop`.

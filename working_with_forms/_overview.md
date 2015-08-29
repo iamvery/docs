@@ -1,5 +1,6 @@
 ---
 name: Working With Forms
+desc: How to use forms in Pakyow.
 guide: true
 ---
 

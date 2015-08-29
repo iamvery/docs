@@ -1,5 +1,6 @@
 ---
 name: Route Mixins
+desc: Reusing routes with mixins.
 ---
 
 Once you outgrow a single route set it becomes necessary to share routes and functions between sets. This can be accomplished with route mixins.

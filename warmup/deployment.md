@@ -1,5 +1,6 @@
 ---
 name: Deploy to Heroku
+desc: Deploying your Pakyow project to Heroku.
 ---
 
 We'll be deploying our application to Heroku. The process is

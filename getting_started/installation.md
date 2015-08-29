@@ -1,5 +1,6 @@
 ---
 name: Installation
+desc: Installing Pakyow for local development.
 ---
 
 Pakyow is easy to install, but needs a modern version of

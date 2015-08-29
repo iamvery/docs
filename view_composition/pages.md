@@ -1,5 +1,6 @@
 ---
 name: Pages
+desc: Creating pages that use a template.
 ---
 
 When fulfilling a request, Pakyow first identifies the page to use based on the request path. For example, a request for '/' would map to the 'index.html' page. Pages can also be nested under folders, meaning either `foo.html` and `foo/index.html` could be used for a view at path `/foo`.

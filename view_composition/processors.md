@@ -1,5 +1,6 @@
 ---
 name: Processors
+desc: Using processors to support multiple template languages.
 ---
 
 Processors allow views to be processed prior to being handed to `Presenter`. Their most common use is to allow views to be written in languages other than HTML (e.g. Markdown or HAML). Since `Presenter` always expects HTML, a processor is passed the contents of the view, processes it, and returns HTML. Below is an example that uses RDiscount to process views written in Markdown:

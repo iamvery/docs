@@ -1,5 +1,6 @@
 ---
 name: Route Hooks
+desc: Using route hooks.
 ---
 
 Another use for named functions is as a before, after, or around hook for a route. Once defined, hooks will be executed in order along with the main route function. For example, we could define a `require_auth` function that checks for proper authentication:

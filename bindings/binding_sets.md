@@ -1,5 +1,6 @@
 ---
 name: Binding Sets
+desc: Grouping bindings into named sets.
 ---
 
 Just like routes, bindings can be grouped into named sets:

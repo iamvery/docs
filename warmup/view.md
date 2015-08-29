@@ -1,5 +1,6 @@
 ---
 name: Start with the View
+desc: Building the front-end of your Pakyow project using view-first development.
 ---
 
 Pakyow encourages a view-first development process. The goal of this process

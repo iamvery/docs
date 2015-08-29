@@ -1,5 +1,6 @@
 ---
 name: Named Route Functions
+desc: using named route functions.
 ---
 
 Named functions are exactly that &ndash; functions that can be used as a primary function for a route. They also come into play when defining [route hooks](/docs/routing#hooks). Defining a function and referencing it in one or more route definitions is easy.

@@ -1,5 +1,6 @@
 ---
 name: Logging
+desc: Writing to a log file.
 ---
 
 Write to the log using the static Logger class:

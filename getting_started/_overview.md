@@ -1,5 +1,6 @@
 ---
-name: Getting Started
+name: Start Here
+desc: These docs will guide you through the details of building a website or web app with Pakyow.
 ---
 
 Hello! These docs will guide you through the details of building a

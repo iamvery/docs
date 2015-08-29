@@ -1,5 +1,6 @@
 ---
 name: Grouping Routes
+desc: Grouping similar routes.
 ---
 
 Groups make it possible to organize related routes. A route group can be named and used later when [looking up and creating a route URI](/docs/routing#uri_generation). Names are optional, but routes in an unnamed group cannot be accessed for URI generation.

@@ -1,5 +1,7 @@
 ---
 name: Warmup Tutorial
+desc: Take a crash course in building and deploying a Pakyow project.
+guide: true
 ---
 
 Hello! This warmup will guide you through the process of developing a

@@ -1,5 +1,6 @@
 ---
 name: License Info
+desc: Pakyow is free and open-source under the MIT License.
 ---
 
 Copyright (c) 2011-2015 Bryan Powell

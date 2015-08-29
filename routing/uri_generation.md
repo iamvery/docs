@@ -1,5 +1,6 @@
 ---
 name: URI Generation
+desc: Building URIs from route definitions.
 ---
 
 Pakyow provides a way to generate full URI strings from a named route and route data. This means the URI is defined once (in the route definition) and can be used throughout the application without duplication. API changes are much less menacing.

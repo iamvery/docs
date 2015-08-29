@@ -1,5 +1,6 @@
 ---
 name: Nested Routes
+desc: Nesting groups, namespaces, and template expansions.
 ---
 
 Groups, namespaces, and template expansions can each be nested at multiple levels. Nesting makes it easier to create and maintain complex route sets, like so:

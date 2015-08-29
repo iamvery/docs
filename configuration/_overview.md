@@ -1,5 +1,6 @@
 ---
 name: Configuration Options
+desc: A full list of configuration options for Pakyow.
 ---
 
 An app can be configured by defining a `configure` block for the environment in `app.rb`:

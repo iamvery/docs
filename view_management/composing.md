@@ -1,5 +1,6 @@
 ---
 name: Composing Views
+desc: Using Pakyow to compose custom views.
 ---
 
 View compilation is easily managed from the backend. The view path can be changed:

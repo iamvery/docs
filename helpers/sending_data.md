@@ -1,5 +1,6 @@
 ---
 name: Sending Data
+desc: Sending data or a file in a response.
 ---
 
 The `send` helper is an easy way to send a file or data in the response:

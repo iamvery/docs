@@ -1,5 +1,6 @@
 ---
 name: Email Notifications
+desc: Capturing failures as email notifications.
 ---
 
 This plugin sends failure notifications via email. To use it, first add `pakyow-fail-mail` to your Gemfile:

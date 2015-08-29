@@ -1,5 +1,6 @@
 ---
 name: Add the Back-End
+desc: Building the back-end of your Pakyow app.
 ---
 
 Next we'll write the back-end code necessary to present our data. No

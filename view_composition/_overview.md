@@ -1,5 +1,6 @@
 ---
 name: Presentation Layer
+desc: Building the presentation layer in Pakyow.
 ---
 
 An app's views are grouped into a view store, which is a hierarchical set of HTML files that roughly map to an app's routes. These files are composed together into the full view for a particular request.

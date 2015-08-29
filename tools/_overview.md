@@ -1,5 +1,6 @@
 ---
 name: Development Tools
+desc: Tools for building Pakyow projects.
 ---
 
 Pakyow provides several tools useful during development.

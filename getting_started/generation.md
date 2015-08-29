@@ -1,5 +1,6 @@
 ---
 name: Creating a Project
+desc: Creating a new Pakyow project.
 ---
 
 Pakyow includes a tool for generating new projects. Run this

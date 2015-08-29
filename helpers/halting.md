@@ -1,5 +1,6 @@
 ---
 name: Halting & Rerouting
+desc: Stopping and rerouting a request.
 ---
 
 The execution of a route block, a controller, a hook, or a handler can be stopped immediately by calling the `halt` helper:

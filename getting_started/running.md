@@ -1,5 +1,6 @@
 ---
 name: Running the Server
+desc: Starting the Pakyow server.
 ---
 
 Pakyow includes a tool for running projects locally during development. To start the

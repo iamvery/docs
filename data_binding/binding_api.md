@@ -1,8 +1,9 @@
 ---
 name: View Binding API
+desc: The Pakyow view binding API.
 ---
 
-Pakyow defines several methods useful when binding data to a view.
+Pakyow defines several useful methods for binding data to a view.
 
 ## for
 

@@ -1,5 +1,6 @@
 ---
 name: Sessions & Cookies
+desc: Using sessions and cookies.
 ---
 
 Sessions keep state across requests. They can be enabled by using any Rack session middleware (defined in `app.rb`):

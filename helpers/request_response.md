@@ -1,5 +1,6 @@
 ---
 name: Request / Response
+desc: Using the underlying request and response objects.
 ---
 
 The underlying Rack Request & Response objects can be accessed through the `request` and `response` methods. This is useful for directly modifying things like response status:

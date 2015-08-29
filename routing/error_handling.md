@@ -1,5 +1,6 @@
 ---
 name: Error Handling
+desc: Handling routing errors in Pakyow.
 ---
 
 Handlers are responsible for intercepting an error so that it can be handled properly. They are defined within the routes block.
