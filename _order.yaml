@@ -1,5 +1,4 @@
 - getting_started
-- warmup
 - view_composition
 - routing
 - data_binding
@@ -9,6 +8,7 @@
 - configuration
 - helpers
 - tools
-- working_with_forms
+- warmup
 - data
+- working_with_forms
 - handling_failure

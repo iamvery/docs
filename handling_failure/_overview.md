@@ -1,5 +1,5 @@
 ---
-name: Knowing When Your App Fails
+name: Handling Failures
 desc: Handle failures in a Pakyow app.
 guide: true
 ---
