@@ -6,7 +6,7 @@ guide: true
 
 Pakyow will play nice with most Ruby object-relational mappers (ORMs). We recommend using [Sequel](https://github.com/jeremyevans/sequel). This guide will teach you how to get Sequel working in your Pakyow project.
 
-## Configuration
+## Configuring Sequel
 
 First, add Sequel as a dependency of your project. Add the following code to your `Gemfile`:
 
@@ -20,7 +20,11 @@ Next, we need Pakyow to connect to the database on boot. Open `app/setup.rb` and
     ruby:
     $db = Sequel.connect(url_or_options)
 
-Replace `url_or_options` with a connect string or connection options ([read more here](http://sequel.jeremyevans.net/rdoc/files/doc/opening_databases_rdoc.html)). We recommend using a connect string defined in an environment variable named `DATABASE_URL`. A good way to define environment variables is with [dotenv](https://github.com/bkeepers/dotenv).
+Replace `url_or_options` with a connect string or connection options ([read more here](http://sequel.jeremyevans.net/rdoc/files/doc/opening_databases_rdoc.html)).
+
+### Using Dotenv for Configuration
+
+We recommend using a connect string defined in an environment variable named `DATABASE_URL`. A good way to define environment variables is with [dotenv](https://github.com/bkeepers/dotenv).
 
 To use dotenv, first add the following code to your `Gemfile`:
 
@@ -50,7 +54,7 @@ Add `.env` to `.gitignore` so that it's accessible only by your environment.
 
 Sequel uses migrations to create tables and make other changes to your database.
 
-To use migrations, first create a `migrations` folder in the root directory of your project. This is where your migration files will live. For example, to create a table we could create a `migratios/001_create_users.rb` file that contains the following code:
+To use migrations, first create a `migrations` folder in the root directory of your project. This is where your migration files will live. For example, to create a table we could create a `migrations/001_create_users.rb` file that contains the following code:
 
     ruby:
     Sequel.migration do
@@ -76,7 +80,7 @@ Run the migrations against a database like this:
 
 You can read more about migrations [here](http://sequel.jeremyevans.net/rdoc/files/doc/migration_rdoc.html).
 
-## Using Models
+## Defining &amp; Using Models
 
 Models can be used to store and fetch data from the database. Building on the example above, we can create a `User` model to create and access users. Sequel makes this really easy, just create a `app/lib/models/user.rb` file with the following code:
 
@@ -91,9 +95,9 @@ Now you can access user data from anywhere in your project like this:
 
 You can read more about models [here](http://sequel.jeremyevans.net/rdoc/files/README_rdoc.html#label-Sequel+Models).
 
-## Rake Tasks
+## Adding Convenient Rake Tasks
 
-If you're using Postgres (and you probably should be), we recommend using the [pakyow-rake-db](https://github.com/bryanp/pakyow-rake-db) gem. It adds several rake tasks to make it easier to do things to your database:
+If you're using Postgres (and you probably should be), we recommend using the [pakyow-rake-db](https://github.com/bryanp/pakyow-rake-db) gem. It adds several [rake](https://github.com/ruby/rake) tasks to make it easier to do things to your database:
 
 ### db:drop
 
@@ -101,7 +105,7 @@ Drops the project's configured database.
 
 ### db:create
 
-Drops the project's configured database.
+Creates the project's configured database.
 
 ### db:migrate[version]
 
