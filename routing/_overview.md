@@ -1,6 +1,6 @@
 ---
-name: HTTP Routing
-desc: Routing HTTP requests in Pakyow.
+name: Routing Requests
+desc: Routing requests in Pakyow.
 ---
 
 Routes are responsible for routing a request to back-end logic. In Pakyow, a route consists of:
@@ -32,7 +32,7 @@ Defining routes for the other supported HTTP methods is just as easy:
 
     patch '/' do
       p 'patch'
-    end    
+    end
 
     delete '/' do
       p 'delete'
