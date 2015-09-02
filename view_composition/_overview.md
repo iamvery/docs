@@ -18,6 +18,9 @@ registered view stores (`app/views` by default). Here's an example view store
 that defines three separate pages:
 
     app/views/
+      _templates/
+        default.html
+
       index.html
 
       nested/
@@ -138,8 +141,8 @@ Every generated Pakyow project includes a `default.html` template.
 A page defines specific content that will be composed into the template. When
 fulfilling a request, Presenter first identifies the page to use based on the
 request path. For example, a request for `/` would map to the `/index` page.
-Pages can also be nested under folders, meaning either `/foo` and `/foo/index`
-could be used for a view at path `/foo`.
+Pages can also be nested under folders, meaning either `/foo.html` or
+`/foo/index.html` could be used for a view at path `/foo`.
 
 A page implements a template. If a template isn't specified, Pakyow uses the
 default template (named `default.html`). A template can be specified by adding
