@@ -63,9 +63,6 @@ To use migrations, first create a `migrations` folder in the root directory of y
           primary_key :id
           String :name
           String :email
-          String :crypted_password
-          Time :created_at
-          Time :updated_at
         end
       end
 
@@ -126,6 +123,41 @@ Runs `db:drop` and `db:setup`.
 ### db:migration:create[name]
 
 Creates a new migration with provided `name`, automatically prefixed.
+
+## Presenting Data
+
+Before we can present data we should create some for testing. To keep it easy for this guide, we'll use console. Run `pakyow console` and enter the following commands:
+
+    bash:
+    irb(main):001:0> User.create(name: 'User 1', body: 'user1@pakyow.org')
+    irb(main):002:0> User.create(name: 'User 2', body: 'user2@pakyow.org')
+    irb(main):003:0> User.create(name: 'User 3', body: 'user3@pakyow.org')
+
+Now we have three users in our database. Type `exit` and hit enter to exit console.
+
+Let's create a view that we'll use to present our users. Create an `index.html` file in `app/views`. Add the following HTML:
+
+    html:
+    <div data-scope="user">
+      <h1 data-prop="name">
+        This is the user name
+      </h1>
+
+      <p data-prop="email">
+        User email goes here
+      </p>
+    </div>
+
+Run `pakyow server` to start the server, then navigate to [localhost:3000](http://localhost:3000) to see the new view prototype. Now let's bind our user data to it. Open `app/lib/routes.rb` and define a default route. Here's what it should look like:
+
+    ruby:
+    Pakyow::App.routes do
+      default do
+        view.scope(:post).apply(User.all)
+      end
+    end
+
+Reload your browser and you'll see the three users we created earlier.
 
 ---
 
