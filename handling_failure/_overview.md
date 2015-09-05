@@ -17,4 +17,9 @@ Add `pakyow-fail` to your `Gemfile`:
     ruby:
     gem "pakyow-fail"
 
+Next, add the following code to your routes file:
+
+    ruby:
+    include Fail::Routes
+
 That's it!
