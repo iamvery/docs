@@ -42,10 +42,12 @@ Next, add the following code right after `Bundler.require` in the `configure :gl
 
 Create a `.env` file in the root of your project and add the following:
 
+    console:
     DATABASE_URL=connect_string
 
 Replace `connect_string` with the connection string for your environment and database. If you're using Postgres, it would look something like this:
 
+    console:
     DATABASE_URL=postgres://localhost/my-database-name
 
 Add `.env` to `.gitignore` so that it's accessible only by your environment.
@@ -73,6 +75,7 @@ To use migrations, first create a `migrations` folder in the root directory of y
 
 Run the migrations against a database like this:
 
+    console:
     bundle exec sequel -m ./migrations {connect_string}
 
 You can read more about migrations [here](http://sequel.jeremyevans.net/rdoc/files/doc/migration_rdoc.html).
@@ -128,7 +131,7 @@ Creates a new migration with provided `name`, automatically prefixed.
 
 Before we can present data we should create some for testing. To keep it easy for this guide, we'll use console. Run `pakyow console` and enter the following commands:
 
-    bash:
+    console:
     irb(main):001:0> User.create(name: 'User 1', body: 'user1@pakyow.org')
     irb(main):002:0> User.create(name: 'User 2', body: 'user2@pakyow.org')
     irb(main):003:0> User.create(name: 'User 3', body: 'user3@pakyow.org')
