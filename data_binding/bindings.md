@@ -1,6 +1,6 @@
 ---
 name: Data Bindings
-desc: Ammending data during the binding process.
+desc: Amending data during the binding process.
 ---
 
 Bindings can be thought of as functions that route data to the view. They can be used for setting view attributes, formatting data, etc.
@@ -39,3 +39,34 @@ Here's the result:
     </div>
 
 Of course, the color will be randomly assigned each time bind is called.
+
+## View Access
+
+A binder can also obtain access to the view object that is being bound to.
+
+    ruby:
+    binding :foo do
+      {
+        view: lambda { |view|
+          view.prepend('some html')
+        }
+      }
+    end
+
+## Modifying Values
+
+A binder can modify an existing value by setting the value to a lambda:
+
+    ruby:
+    binding :foo do
+     { class: lambda { |klass| klass << 'class_name' } }
+    end
+
+## Binding Sets
+
+Just like routes, bindings can be grouped into named sets:
+
+    ruby:
+    Pakyow::App.bindings :my_set do
+      # bindings defined here
+    end

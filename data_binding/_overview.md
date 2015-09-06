@@ -1,6 +1,6 @@
 ---
-name: Combining View &amp; Data
-desc: Binding data to views in Pakyow.
+name: Rendering Data
+desc: Rendering data in views.
 ---
 
 Pakyow views are logicless and data is instead bound into the view from the
