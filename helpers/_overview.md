@@ -1,5 +1,5 @@
 ---
-name: Back-End Helpers
+name: Helper Methods
 desc: Pakyow helper methods.
 ---
 
