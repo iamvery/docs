@@ -19,17 +19,19 @@ application's routes can be called over a WebSocket just as easily as HTTP.
 
 ## Channel Subscriptions
 
-From a route, create a subscription for the current connection with `subscribe`.
+From within a route, the connected client socket can be accessed via the 
+`socket` helper. You can then be subscribe the client socket to a channel by
+calling `subscribe`.
 
     ruby:
     socket.subscribe(:chan1)
 
-You can also subscribe multiple channels at one time:
+You can also subscribe the client socket to multiple channels at once:
 
     ruby:
     socket.subscribe(:chan1, :chan2)
 
-To unsubscribe a connection from one or more channels, use `unsubscribe`.
+To unsubscribe a client socket from one or more channels, use `unsubscribe`.
 
     ruby:
     socket.subscribe(:chan2)
@@ -55,7 +57,7 @@ create a new thread where the WebSocket will spend its entire lifetime.
 Each WebSocket connection has a unique connection id. This is an important
 security feature of Pakyow Realtime. You can read more about this feature later
 on in this guide. For now, just know that the connection id is important if you
-expect to receive and messages on subscribed channels.
+expect to receive any messages on subscribed channels.
 
 When rendering a view, the connection id is automatically added to the body tag
 in the `data-socket-connection-id` attribute. With a bit of JavaScript, we can
