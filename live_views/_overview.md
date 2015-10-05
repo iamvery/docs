@@ -87,8 +87,8 @@ And we can change application state through the mutable as well:
     ruby:
     data(:user).create(params[:user])
 
-Mutables allow routes to be *declarative* instead of *imperative*. We say *what*
-should happen in the route and define *how* it happens in the mutator.
+Mutables allow routes to access data in a *declarative* manner. We say *what*
+data we want in the route and define *how* we get that data in the mutable.
 
 ## Mutators
 
@@ -149,17 +149,17 @@ example, a view can be subscribed so that it only updates the data for the
 current user:
 
     ruby:
-    view.scope(:user).mutate(:list, with: 
-      data(:user).for_user(current_user)).subscribe({
-      user_id: current_user.id
-    })
+    view.scope(:user).mutate(:list).subscribe(user_id: current_user.id)
 
 The `user_id` qualifier is added to the channel name, so when future mutations
 occur, the result will only be pushed down to that particular client. This means
 only the client matching `current_user.id` will receive the updates.
 
-Mutators can also be qualified. Here's how you would express that you want a
-user's mutations to be sent only to clients that render that user:
+    ruby:
+    ui.mutated(:user, user_id: current_user.id)
+
+Mutators can also be qualified. Here's how you would express that you want
+mutations to be sent only to clients that render that user:
 
     ruby:
     Pakyow::Mutators :user do
@@ -170,9 +170,8 @@ user's mutations to be sent only to clients that render that user:
 
     view.scope(:user).mutate(:present, with: data(:user).find(1)).subscribe
 
-The value for the qualifier is the id of the user passed to `present`. Now only
-clients who currently render the `user:1` will receive future state changes
-about that user.
+The value for the qualifier is pulled from the id of the user data passed
+into the mutator. You can define qualifiers for any data attribute.
 
 ## Component Messages
 
@@ -183,7 +182,7 @@ be performed on the component rendered by the browser.
     ruby:
     ui.component(:chat).prepend(message_instance)
 
-It's also possible to send a message to the component that it knows to handle.
+It's also possible to send a message to the component that it knows how to handle.
 
     ruby:
     ui.component(:chat).push({ ... })

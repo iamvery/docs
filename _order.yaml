@@ -2,7 +2,7 @@
 - view_composition
 - routing
 - data_binding
-- live_ui
+- live_views
 - view_management
 - mailer
 - configuration
