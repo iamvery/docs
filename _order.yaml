@@ -3,6 +3,7 @@
 - routing
 - data_binding
 - realtime
+- live_views
 - view_management
 - mailer
 - testing
