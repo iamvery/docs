@@ -138,3 +138,19 @@ Other delivery options passed to Mail.
 
 *mailer.encoding (UTF-8)*  
 The encoding to use.
+
+## Realtime Config
+
+*realtime.redis ({ url: 'redis://localhost:6379' })*  
+The Redis connection hash.
+
+*realtime.redis_key (pw:channels)*  
+The Redis key used to keep track of channel subscriptions.
+
+*realtime.registry (development: SimpleRegistry, production: RedisRegistry)*  
+The registry used to keep track of channel subscriptions.
+
+## UI Config
+
+*ui.registry (development: SimpleMutationRegistry, production: RedisMutationRegistry)*  
+The registry used to keep track of registered mutations.
