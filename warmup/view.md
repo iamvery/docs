@@ -32,8 +32,9 @@ Every Pakyow template defines one or more containers. Later on in the process,
 we'll create pages that define content for these containers. Containers are
 defined with an inline comment:
 
-    html:
-    <!-- @container container_name -->
+```html
+<!-- @container container_name -->
+```
 
 A nameless `default` container is defined for you in the `pakyow.html`
 template. During construction, Pakyow composes page content with the
@@ -60,52 +61,54 @@ will also link to a page that will show more details about it.
 
 Create `app/views/index.html` with the following content:
 
-    html:
-    <div class="container-2 margin-t">
-      <img src="http://placehold.it/50x50" class="float-l margin-r">
+```html
+<div class="container-2 margin-t">
+  <img src="http://placehold.it/50x50" class="float-l margin-r">
 
-      <a href="/show" class="float-r">
-        View Details
-      </a>
+  <a href="/show" class="float-r">
+    View Details
+  </a>
 
-      <h4>
-        User's Name
-      </h4>
+  <h4>
+    User's Name
+  </h4>
 
-      <p>
-        Tweet text goes here
-      </p>
-    </div>
+  <p>
+    Tweet text goes here
+  </p>
+</div>
+```
 
 Reload the browser and you'll see the code we added. Huzzah!
 
 Clicking on the view details link takes us to a broken page, so let's
 fix that. Create `app/views/show.html` with the following content:
 
-    html:
-    <a href="/">
-      Back to list
+```html
+<a href="/">
+  Back to list
+</a>
+
+<div class="margin-t">
+  <img src="http://placehold.it/50x50" class="float-l margin-r">
+
+  <h4>
+    User's Name
+  </h4>
+
+  <p>
+    Tweet text goes here
+  </p>
+
+  <p>
+    Retweeted n times;
+    Favorited n times;
+    <a href="#">
+      View on twitter
     </a>
-
-    <div class="margin-t">
-      <img src="http://placehold.it/50x50" class="float-l margin-r">
-
-      <h4>
-        User's Name
-      </h4>
-
-      <p>
-        Tweet text goes here
-      </p>
-
-      <p>
-        Retweeted n times;
-        Favorited n times;
-        <a href="#">
-          View on twitter
-        </a>
-      </p>
-    </div>
+  </p>
+</div>
+```
 
 Reload the browser and you'll see the new view.
 
@@ -114,20 +117,22 @@ view building, partials, to add this to our index view. First, define
 content for the partial by creating a `_intro.html` file in the `app/views`
 directory with the following content:
 
-    html:
-    <h1 class="divide">
-      Pakyow Warmup
-    </h1>
+```html
+<h1 class="divide">
+  Pakyow Warmup
+</h1>
 
-    <p>
-      Just a fun little warmup using <a href="http://pakyow.org">Pakyow</a>.
-    </p>
+<p>
+  Just a fun little warmup using <a href="http://pakyow.org">Pakyow</a>.
+</p>
+```
 
 Next, include the partial into the index page by adding this HTML
 to the top of `index.html`:
 
-    html:
-    <!-- @include intro -->
+```html
+<!-- @include intro -->
+```
 
 Reload the index page in your browser and you'll see the intro has been
 composed into the template. This intro could be included into any page,
@@ -146,36 +151,39 @@ present. Looking at the `index.html` view it's pretty easy to identify the
 data that's being represented. For example, we can see that the `div`
 represents a tweet. Since this is a *type* of data we label it as a scope:
 
-    html:
-    <div data-scope="tweet" class="container-2 margin-t">
+```html
+<div data-scope="tweet" class="container-2 margin-t">
+```
 
 We also know the `img` will present an avatar. Since this is an
 *attribute* of a tweet, we label it as a prop:
 
-    html:
-    <img data-prop="avatar" src="http://placehold.it/50x50" class="float-l margin-r">
+```html
+<img data-prop="avatar" src="http://placehold.it/50x50" class="float-l margin-r">
+```
 
 We continue labeling significant nodes (show link, user name, and text)
 and end up with the following code:
 
-    html:
-    <!-- @include intro -->
+```html
+<!-- @include intro -->
 
-    <div data-scope="tweet" class="container-2 margin-t">
-      <img data-prop="avatar" src="http://placehold.it/50x50" class="float-l margin-r">
+<div data-scope="tweet" class="container-2 margin-t">
+  <img data-prop="avatar" src="http://placehold.it/50x50" class="float-l margin-r">
 
-      <a data-prop="show" href="/show" class="float-r">
-        View Details
-      </a>
+  <a data-prop="show" href="/show" class="float-r">
+    View Details
+  </a>
 
-      <h4 data-prop="user">
-        User's Name
-      </h4>
+  <h4 data-prop="user">
+    User's Name
+  </h4>
 
-      <p data-prop="text">
-        Tweet text goes here
-      </p>
-    </div>
+  <p data-prop="text">
+    Tweet text goes here
+  </p>
+</div>
+```
 
 These attributes gives Pakyow the knowledge it needs to properly apply our
 data to the view. Pakyow keeps the view completely separate from the
@@ -184,30 +192,31 @@ application should be presented. If you haven't already, add the scopes
 and props to your `index.html` view. Let's also describe the data presented
 by `show.html`:
 
-    html:
-    <a href="/">
-      Back to list
+```html
+<a href="/">
+  Back to list
+</a>
+
+<div data-scope="tweet" class="margin-t">
+  <img data-prop="avatar" src="http://placehold.it/50x50" class="float-l margin-r">
+
+  <h4 data-prop="user">
+    User's Name
+  </h4>
+
+  <p data-prop="text">
+    Tweet text goes here
+  </p>
+
+  <p>
+    Retweeted <span data-prop="retweet_count">n</span> times;
+    Favorited <span data-prop="favorite_count">n</span> times;
+    <a data-prop="twitter" href="#">
+      View on twitter
     </a>
-
-    <div data-scope="tweet" class="margin-t">
-      <img data-prop="avatar" src="http://placehold.it/50x50" class="float-l margin-r">
-
-      <h4 data-prop="user">
-        User's Name
-      </h4>
-
-      <p data-prop="text">
-        Tweet text goes here
-      </p>
-
-      <p>
-        Retweeted <span data-prop="retweet_count">n</span> times;
-        Favorited <span data-prop="favorite_count">n</span> times;
-        <a data-prop="twitter" href="#">
-          View on twitter
-        </a>
-      </p>
-    </div>
+  </p>
+</div>
+```
 
 <h2 id="front-end">Front-End Wrapup</h2>
 

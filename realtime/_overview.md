@@ -19,22 +19,25 @@ application's routes can be called over a WebSocket just as easily as HTTP.
 
 ## Channel Subscriptions
 
-From within a route, the connected client socket can be accessed via the 
+From within a route, the connected client socket can be accessed via the
 `socket` helper. You can then be subscribe the client socket to a channel by
 calling `subscribe`.
 
-    ruby:
-    socket.subscribe(:chan1)
+```ruby
+socket.subscribe(:chan1)
+```
 
 You can also subscribe the client socket to multiple channels at once:
 
-    ruby:
-    socket.subscribe(:chan1, :chan2)
+```ruby
+socket.subscribe(:chan1, :chan2)
+```
 
 To unsubscribe a client socket from one or more channels, use `unsubscribe`.
 
-    ruby:
-    socket.subscribe(:chan2)
+```ruby
+socket.subscribe(:chan2)
+```
 
 That's all there is to it!
 
@@ -42,8 +45,9 @@ That's all there is to it!
 
 To send a message to connections on one or more channels, use `push`.
 
-    ruby:
-    socket.push({ foo: 'bar' }, :chan1)
+```ruby
+socket.push({ foo: 'bar' }, :chan1)
+```
 
 The data (a hash in our case) will be serialized as JSON and pushed to all
 connections who are subscribed to `chan1`.
@@ -63,37 +67,38 @@ When rendering a view, the connection id is automatically added to the body tag
 in the `data-socket-connection-id` attribute. With a bit of JavaScript, we can
 establish a WebSocket connection with the server:
 
-    javascript:
-    var wsUrl = '';
+```javascript
+var wsUrl = '';
 
-    var host = window.location.hostname;
-    var port = window.location.port;
+var host = window.location.hostname;
+var port = window.location.port;
 
-    if (window.location.protocol === 'http:') {
-      wsUrl += 'ws://';
-    } else if (window.location.protocol === 'https:') {
-      wsUrl += 'wss://';
-    }
+if (window.location.protocol === 'http:') {
+  wsUrl += 'ws://';
+} else if (window.location.protocol === 'https:') {
+  wsUrl += 'wss://';
+}
 
-    wsUrl += host;
+wsUrl += host;
 
-    if (port) {
-      wsUrl += ':' + port;
-    }
+if (port) {
+  wsUrl += ':' + port;
+}
 
-    var conn = document.getElementsByTagName('body')[0].getAttribute('data-socket-connection-id');
-    wsUrl += '/?socket_connection_id=' + conn;
+var conn = document.getElementsByTagName('body')[0].getAttribute('data-socket-connection-id');
+wsUrl += '/?socket_connection_id=' + conn;
 
-    window.socket = new WebSocket(wsUrl);
+window.socket = new WebSocket(wsUrl);
 
-    window.socket.onopen = function (event) {
-      console.log('socket opened');
-    };
+window.socket.onopen = function (event) {
+  console.log('socket opened');
+};
 
-    window.socket.onmessage = function (evt) {
-      console.log('socket message');
-      console.log(JSON.parse(evt.data);data);
-    };
+window.socket.onmessage = function (evt) {
+  console.log('socket message');
+  console.log(JSON.parse(evt.data);data);
+};
+```
 
 Now any messages received by the client will be logged in the browser console.
 

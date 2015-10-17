@@ -14,12 +14,14 @@ Failure handlers are also made available, which can do any number of things when
 
 Add `pakyow-fail` to your `Gemfile`:
 
-    ruby:
-    gem "pakyow-fail"
+```ruby
+gem "pakyow-fail"
+```
 
 Next, add the following code to your routes file:
 
-    ruby:
-    include Fail::Routes
+```ruby
+include Fail::Routes
+```
 
 That's it!

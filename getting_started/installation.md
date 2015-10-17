@@ -8,8 +8,9 @@ the [Ruby](http://www.ruby-lang.org) programming language.
 You can check the state of your system by running this
 command in your terminal:
 
-    console:
-    bash <(curl -s https://raw.githubusercontent.com/pakyow/pakyow-deps/master/check.sh)
+```console
+bash <(curl -s https://raw.githubusercontent.com/pakyow/pakyow-deps/master/check.sh)
+```
 
 Here are some additional links that might be helpful:
 
@@ -18,7 +19,8 @@ Here are some additional links that might be helpful:
 
 Once everything checks out, install Pakyow via RubyGems:
 
-    console:
-    gem install pakyow
+```console
+gem install pakyow
+```
 
 That's it! Pakyow is installed and ready to rumble.

@@ -24,21 +24,23 @@ with a Pakyow back-end.
 First we need to add the Twitter gem to our `Gemfile`. The entire file should
 look like this:
 
-    ruby:
-    source "http://rubygems.org"
+```ruby
+source "http://rubygems.org"
 
-    gem "pakyow", "0.9.0"
+gem "pakyow", "0.9.0"
 
-    # application server
-    gem "puma"
+# application server
+gem "puma"
 
-    gem "twitter"
+gem "twitter"
+```
 
 Stop the server (Ctrl-C) and run `bundle install` to install the gem. Then require
 it at the top of `app.rb`:
 
-    ruby:
-    require 'twitter'
+```ruby
+require 'twitter'
+```
 
 Next, you'll need to register the application with Twitter. You can do that
 [here](https://dev.twitter.com/apps/new). It doesn't matter what you use as the
@@ -49,47 +51,49 @@ following code to the `global` configure block so it's available to both our
 development and production environments (be sure and use the credentials
 provided to you by Twitter):
 
-    ruby:
+```ruby
+app.consumer_key        = "YOUR_CONSUMER_KEY"
+app.consumer_secret     = "YOUR_CONSUMER_SECRET"
+app.access_token        = "YOUR_ACCESS_TOKEN"
+app.access_token_secret = "YOUR_ACCESS_SECRET"
+```
+
+The entire file should look like this:
+
+```ruby
+require 'bundler/setup'
+
+require 'pakyow'
+require 'twitter'
+
+Pakyow::App.define do
+  configure :global do
+    app.name = "Pakyow Warmup"
+
     app.consumer_key        = "YOUR_CONSUMER_KEY"
     app.consumer_secret     = "YOUR_CONSUMER_SECRET"
     app.access_token        = "YOUR_ACCESS_TOKEN"
     app.access_token_secret = "YOUR_ACCESS_SECRET"
+  end
 
-The entire file should look like this:
+  configure :development do
+    # put development config here
+  end
 
-    ruby:
-    require 'bundler/setup'
+  configure :prototype do
+    # an environment for running the front-end prototype with no backend
+    app.ignore_routes = true
+  end
 
-    require 'pakyow'
-    require 'twitter'
+  configure :staging do
+    # put your staging config here
+  end
 
-    Pakyow::App.define do
-      configure :global do
-        app.name = "Pakyow Warmup"
-
-        app.consumer_key        = "YOUR_CONSUMER_KEY"
-        app.consumer_secret     = "YOUR_CONSUMER_SECRET"
-        app.access_token        = "YOUR_ACCESS_TOKEN"
-        app.access_token_secret = "YOUR_ACCESS_SECRET"
-      end
-
-      configure :development do
-        # put development config here
-      end
-
-      configure :prototype do
-        # an environment for running the front-end prototype with no backend
-        app.ignore_routes = true
-      end
-
-      configure :staging do
-        # put your staging config here
-      end
-
-      configure :production do
-        # put your production config here
-      end
-    end
+  configure :production do
+    # put your production config here
+  end
+end
+```
 
 Your application is ready to talk with Twitter!
 
@@ -101,21 +105,22 @@ client throughout our back-end code, let's create a helper.
 
 Open `app/lib/helpers.rb` and add the following code inside the `Helpers` module:
 
-    ruby:
-    def client
-      @client ||= configure
-    end
+```ruby
+def client
+  @client ||= configure
+end
 
-    protected
+protected
 
-    def configure
-      Twitter::REST::Client.new do |client|
-        client.consumer_key         = config.app.consumer_key
-        client.consumer_secret      = config.app.consumer_secret
-        client.access_token         = config.app.access_token
-        client.access_token_secret  = config.app.access_token_secret
-      end
-    end
+def configure
+  Twitter::REST::Client.new do |client|
+    client.consumer_key         = config.app.consumer_key
+    client.consumer_secret      = config.app.consumer_secret
+    client.access_token         = config.app.access_token
+    client.access_token_secret  = config.app.access_token_secret
+  end
+end
+```
 
 When we call the `client` method from our back-end code, it will configure a new
 instance of the Twitter client and return it. We'll use this object to fetch our
@@ -131,31 +136,34 @@ Pakyow makes this super easy.
 
 Open `app/lib/routes.rb` and add the following code:
 
-    ruby:
-    restful :tweet, '/' do
-    end
+```ruby
+restful :tweet, '/' do
+end
+```
 
 This defines the restful object and mounts it at the '/' path. Next, create a
 route that responds to the 'list' REST method:
 
-    ruby:
-    restful :tweet, '/' do
-      list do
-      end
-    end
+```ruby
+restful :tweet, '/' do
+  list do
+  end
+end
+```
 
 The code block for the list route will be invoked when we make a GET request
 to '/'. We also need a route that presents information about a particular tweet.
 This falls under the 'show' REST method:
 
-    ruby:
-    restful :tweet, '/' do
-      list do
-      end
+```ruby
+restful :tweet, '/' do
+  list do
+  end
 
-      show do
-      end
-    end
+  show do
+  end
+end
+```
 
 Now let's add our logic to these empty route definitions.
 
@@ -165,15 +173,17 @@ The first thing the `list` route will do is fetch the tweets that will be
 displayed. We can use the `client` helper we defined earlier to search for
 10 recent tweets containing #programming:
 
-    ruby:
-    tweets = client.search("#programming", result_type: "recent").take(10).to_a
+```ruby
+tweets = client.search("#programming", result_type: "recent").take(10).to_a
+```
 
 Now, we can apply the data to the view. Pakyow automatically maps the request
 path to a path in the views directory; here it maps '/' to the root view
 directory. All that's left is to apply the data:
 
-    ruby:
-    view.scope(:tweet).apply(tweets)
+```ruby
+view.scope(:tweet).apply(tweets)
+```
 
 This bit of code finds and applies data to the node that represents a `tweet`.
 The `apply` method alters the structure of the view to match the structure of
@@ -182,11 +192,12 @@ every tweet. Once the structures match, the data is easily mapped to the view.
 
 The full list route should look like this:
 
-    ruby:
-    list do
-      tweets = client.search("#programming", result_type: "recent").take(10).to_a
-      view.scope(:tweet).apply(tweets)
-    end
+```ruby
+list do
+  tweets = client.search("#programming", result_type: "recent").take(10).to_a
+  view.scope(:tweet).apply(tweets)
+end
+```
 
 Fire up the app (if it isn't already running) and go to [localhost:3000](http://localhost:3000).
 You'll see that the tweets are
@@ -198,12 +209,13 @@ We can solve this using bindings. Bindings sit between the back-end and
 front-end code and help apply data to the view. Open `app/lib/bindings.rb` and
 define the following binding for our `avatar` prop:
 
-    ruby:
-    scope :tweet do
-      binding :avatar do
-        { src: bindable.user.profile_image_url }
-      end
-    end
+```ruby
+scope :tweet do
+  binding :avatar do
+    { src: bindable.user.profile_image_url }
+  end
+end
+```
 
 This binding finds the `profile_image_url` in the tweet data being
 applied and maps it to the `src` attribute. It will be invoked whenever
@@ -214,10 +226,11 @@ are now properly presented.
 Let's also define a binding for the `user` prop, so the user name is
 presented:
 
-    ruby:
-    binding :user do
-      bindable.user.name
-    end
+```ruby
+binding :user do
+  bindable.user.name
+end
+```
 
 Unlike the `avatar` binding which mapped data to the `src` attribute,
 this binding simply returns the user > name data as the content for
@@ -228,19 +241,21 @@ All of our data is now being presented. There's still one problem --
 that is, the "View Details" link needs to go to the proper URI. Define
 the following binding for the `show` prop:
 
-    ruby:
-    binding :show do
-      { href: router.group(:tweet).path(:show, tweet_id: bindable.id) }
-    end
+```ruby
+binding :show do
+  { href: router.group(:tweet).path(:show, tweet_id: bindable.id) }
+end
+```
 
 This binding uses the router path helper to create a URI to the restful
 `show` method for the tweet. Reload the browser and click on a link. It
 does take us to the right place, but we still see the prototype. Let's
 add our back-end logic:
 
-    ruby:
-    tweet = client.status(params[:tweet_id])
-    view.scope(:tweet).apply(tweet)
+```ruby
+tweet = client.status(params[:tweet_id])
+view.scope(:tweet).apply(tweet)
+```
 
 Reload your browser and you'll see the show view, with data. You'll notice
 that the bindings we defined earlier are already being used here.
@@ -251,10 +266,11 @@ link. The data for the counts both just happen to be mapped correctly,
 so there's nothing to do there. However, for the twitter link to
 work we must define one last binding:
 
-    ruby:
-    binding :twitter do
-      { href: "http://twitter.com/#{bindable.user.screen_name}/status/#{bindable.id}" }
-    end
+```ruby
+binding :twitter do
+  { href: "http://twitter.com/#{bindable.user.screen_name}/status/#{bindable.id}" }
+end
+```
 
 Reload again and you'll see the twitter link now works properly.
 

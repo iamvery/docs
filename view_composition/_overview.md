@@ -17,15 +17,17 @@ When a request is received, `Pakyow::Presenter` finds a matching path in any
 registered view stores (`app/views` by default). Here's an example view store
 that defines three separate pages:
 
-    app/views/
-      _templates/
-        default.html
+```
+app/views/
+  _templates/
+    default.html
 
-      index.html
+  index.html
 
-      nested/
-        deep.html
-        index.html
+  nested/
+    deep.html
+    index.html
+```
 
 A request to `/` would result in Presenter using the `/index.html` page as the
 starting point for composition. Similarly, a request to `/nested` would result
@@ -44,81 +46,90 @@ containers. Let's look at an example.
 
 Here's a template:
 
-    html:
-    <html>
-    <body>
-      <!-- @container -->
+```html
+<html>
+<body>
+  <!-- @container -->
 
-      <footer>
-        <!-- @container footer -->
-      </footer>
-    </body>
-    </html>
+  <footer>
+    <!-- @container footer -->
+  </footer>
+</body>
+</html>
+```
 
 Here's the page:
 
-    html:
-    content goes here
+```html
+content goes here
 
-    <!-- @within footer -->
-      footer content goes here
-    <!-- /within -->
+<!-- @within footer -->
+  footer content goes here
+<!-- /within -->
+```
 
 And here's the fully composed view:
 
-    html:
-    <html>
-    <body>
-      content goes here
+```html
+<html>
+<body>
+  content goes here
 
-      <footer>
-        footer content goes here
-      </footer>
-    </body>
-    </html>
+  <footer>
+    footer content goes here
+  </footer>
+</body>
+</html>
+```
 
 Now, how do partials fit into this? This is best explained with an example.
-Here's our view store, complete with partials (the files with leading '_'):
+Here's our view store, complete with partials (the files with leading `_`):
 
+```
+app/views/
+  _reusable.html
+  index.html
 
-    app/views/
-      _reusable.html
-      index.html
-
-      nested/
-        _reusable.html
+  nested/
+    _reusable.html
+```
 
 Here's the `/index` page:
 
-    html:
-    content goes here
+```html
+content goes here
 
-    <!-- @include reusable -->
+<!-- @include reusable -->
+```
 
 Here's the `/_reusable` partial:
 
-    html:
-    reusable
+```html
+reusable
+```
 
 Here's the `/nested/_reusable` partial:
 
-    html:
-    nested reusable
+```html
+nested reusable
+``
 
 When composed at `/`, Presenter will use the `/_reusable` partial, resulting in
 this composed view (intentionally leaving the template out of this):
 
-    html:
-    content goes here
+```html
+content goes here
 
-    reusable
+reusable
+```
 
 And here's the composed view at `/nested`:
 
-    html:
-    content goes here
+```html
+content goes here
 
-    nested reusable
+nested reusable
+```
 
 Because there is no `/nested/index` page, Presenter falls back to `/index`. But
 it composes the `/nested/_reusable` partial since it is considered to be *more
@@ -130,8 +141,9 @@ A template defines the common structure for the view. During composition,
 content from a page will be composed into containers defined in the template.
 Containers are defined with an inline comment:
 
-    html:
-    <!-- @container container_name -->
+```html
+<!-- @container container_name -->
+```
 
 By default, all templates are defined in the `app/views/_templates` directory.
 Every generated Pakyow project includes a `default.html` template.
@@ -148,19 +160,21 @@ A page implements a template. If a template isn't specified, Pakyow uses the
 default template (named `default.html`). A template can be specified by adding
 YAML front-matter to the page:
 
-      html:
-      ---
-      template: some_template
-      ---
+```html
+---
+template: some_template
+---
 
-      page content goes here
+page content goes here
+```
 
 The title for a page can also be specified in the front-matter:
 
-    html:
-    ---
-    title: This is my page title
-    ---
+```html
+---
+title: This is my page title
+---
+```
 
 ## Partials
 
@@ -168,6 +182,6 @@ A partial is a reusable view that can be included into a template, page, or
 another partial. They are defined at some location in the view store hierarchy
 with a leading underscore (`_`). Including them is easy:
 
-    html:
-    <!-- @include some_partial -->
-
+```html
+<!-- @include some_partial -->
+```

@@ -5,17 +5,19 @@ desc: A full list of configuration options for Pakyow.
 
 An app can be configured by defining a `configure` block for the environment in `app.rb`:
 
-    ruby:
-    configure :development do
-      # put your development config here
-    end
+```ruby
+configure :development do
+  # put your development config here
+end
+```
 
 Configuration defined in a `global` configure block will be available across all environments.
 
-    ruby:
-    configure :global do
-      # put your global config here
-    end
+```ruby
+configure :global do
+  # put your global config here
+end
+```
 
 Below you'll find a list of available config options (defaults in parenthesis).
 

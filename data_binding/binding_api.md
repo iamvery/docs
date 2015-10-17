@@ -11,34 +11,38 @@ The `for` method yields each view and matching datum. This is driven by the
 view, meaning datums are yielded until no more views are available. In the
 single view case, only one view/datum pair is yielded.
 
-    ruby:
-    view.for(data) do |view, datum|
-      ...
-    end
+```ruby
+view.for(data) do |view, datum|
+  ...
+end
+```
 
 ## match
 
 The `match` method returns a `ViewCollection` that has been transformed to match
 the data.
 
-    ruby:
-    view.match(data)
+```ruby
+view.match(data)
+```
 
 ## repeat
 
 The `repeat` method calls `match`, then yields each view/datum pair.
 
-    ruby:
-    view.repeat(data) do |view, datum|
-      ...
-    end
+```ruby
+view.repeat(data) do |view, datum|
+  ...
+end
+```
 
 This is the same as chaining `match` and `for`:
 
-    ruby:
-    view.match(data).for(data) do |view, datum|
-      ...
-    end
+```ruby
+view.match(data).for(data) do |view, datum|
+  ...
+end
+```
 
 ## bind
 

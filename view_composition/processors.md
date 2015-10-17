@@ -10,17 +10,20 @@ expects HTML, a processor is given the contents of the view, processes it, and
 returns HTML. Below is an example that uses RDiscount to process views written
 in Markdown:
 
-    ruby:
-    processor :md, :markdown do |content|
-      RDiscount.new(content).to_html
-    end
+```ruby
+processor :md, :markdown do |content|
+  RDiscount.new(content).to_html
+end
+```
 
 This processor will process any view with a `md` or `markdown` extension. An app
 using this processor can define views in both Markdown and HTML. Presenter will
 work as if all views were written in HTML to begin with.
 
-    views/
-      index.md
+```
+views/
+  index.md
+```
 
 Processors are defined in `app/setup.rb`.
 

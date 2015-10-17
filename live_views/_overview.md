@@ -10,12 +10,13 @@ rather than attempting to *replace* it by moving logic to the client.
 
 Say an application has a view that presents a message.
 
-    html:
-    <div data-scope="user" data-id="1">
-      <span data-prop="name">
-        Bob Dylan
-      </span>
-    </div>
+```html
+<div data-scope="user" data-id="1">
+  <span data-prop="name">
+    Bob Dylan
+  </span>
+</div>
+```
 
 This message is currently being viewed by multiple users. At some point, the
 `name` for `user:1` changes to `Thelonius Monk`. Every user will see the new
@@ -54,38 +55,41 @@ defining *actions* and *queries* that describe interactions with a data model:
 
 Here's an example mutable for the `User` model in the above use-case:
 
-    ruby:
-    class User < Sequel::Model; end
+```ruby
+class User < Sequel::Model; end
 
-    Pakyow::App.mutable :user do
-      model User
+Pakyow::App.mutable :user do
+  model User
 
-      action :create do |object|
-        User.create(object)
-      end
+  action :create do |object|
+    User.create(object)
+  end
 
-      query :all do
-        User.all
-      end
+  query :all do
+    User.all
+  end
 
-      query :find do |id|
-        User[id]
-      end
-    end
+  query :find do |id|
+    User[id]
+  end
+end
+```
 
 From a route, we can use the mutable to query for data:
 
-    ruby:
-    # get all the users
-    data(:user).all
+```ruby
+# get all the users
+data(:user).all
 
-    # get a specific user
-    data(:user).find(1)
+# get a specific user
+data(:user).find(1)
+```
 
 And we can change application state through the mutable as well:
 
-    ruby:
-    data(:user).create(params[:user])
+```ruby
+data(:user).create(params[:user])
+```
 
 Mutables allow routes to access data in a *declarative* manner. We say *what*
 data we want in the route and define *how* we get that data in the mutable.
@@ -97,17 +101,19 @@ Pakyow UI also introduces **mutators**. As explained above, a mutator describes
 
 Here's a mutator for rendering a list of users:
 
-    ruby:
-    Pakyow::Mutators :user do
-      mutator :list do |view, users|
-        view.apply(users)
-      end
-    end
+```ruby
+Pakyow::Mutators :user do
+  mutator :list do |view, users|
+    view.apply(users)
+  end
+end
+```
 
 From a route, the mutator can be invoked on a view like this:
 
-    ruby:
-    view.scope(:user).mutate(:list, with: data(:user).all)
+```ruby
+view.scope(:user).mutate(:list, with: data(:user).all)
+```
 
 Notice that we're mutating with the data from our mutable user object. Pakyow
 will automatically fetch the data using the `all` query and pass it to the
@@ -120,8 +126,9 @@ Pakyow takes care of the details.
 This is a nice pattern on its own, but it becomes even more useful when you want
 to subscribe a mutation to future state changes. This is done with `subscribe`.
 
-    ruby:
-    view.scope(:user).mutate(:list, with: data(:user).all).subscribe
+```ruby
+view.scope(:user).mutate(:list, with: data(:user).all).subscribe
+```
 
 The view is rendered in the intial request/response cycle exactly like it was
 before, but now it's also *subscribed to any future change in state that would
@@ -129,8 +136,9 @@ affect the rendered view*.
 
 Let's mutate our state by creating a new user:
 
-    ruby:
-    data(:user).create(params[:user])
+```ruby
+data(:user).create(params[:user])
+```
 
 Pakyow knows that we've mutated our user state, so it automatically pushes down
 instructions describing how each client should update their view to match the
@@ -148,27 +156,30 @@ Qualifiers allow for fine-grained control over who receives updates. For
 example, a view can be subscribed so that it only updates the data for the
 current user:
 
-    ruby:
-    view.scope(:user).mutate(:list).subscribe(user_id: current_user.id)
+```ruby
+view.scope(:user).mutate(:list).subscribe(user_id: current_user.id)
+```
 
 The `user_id` qualifier is added to the channel name, so when future mutations
 occur, the result will only be pushed down to that particular client. This means
 only the client matching `current_user.id` will receive the updates.
 
-    ruby:
-    ui.mutated(:user, user_id: current_user.id)
+```ruby
+ui.mutated(:user, user_id: current_user.id)
+```
 
 Mutators can also be qualified. Here's how you would express that you want
 mutations to be sent only to clients that render that user:
 
-    ruby:
-    Pakyow::Mutators :user do
-      mutator :present, qualify: [:id] do |view, user|
-        view.bind(user)
-      end
-    end
+```ruby
+Pakyow::Mutators :user do
+  mutator :present, qualify: [:id] do |view, user|
+    view.bind(user)
+  end
+end
 
-    view.scope(:user).mutate(:present, with: data(:user).find(1)).subscribe
+view.scope(:user).mutate(:present, with: data(:user).find(1)).subscribe
+```
 
 The value for the qualifier is pulled from the id of the user data passed
 into the mutator. You can define qualifiers for any data attribute.
@@ -179,13 +190,15 @@ Pakyow UI provides ways to interact with browser components (discussed in the
 [Pakyow.js Library Docs](/docs/js)). Any view methods can be called, which will
 be performed on the component rendered by the browser.
 
-    ruby:
-    ui.component(:chat).prepend(message_instance)
+```ruby
+ui.component(:chat).prepend(message_instance)
+```
 
 It's also possible to send a message to the component that it knows how to handle.
 
-    ruby:
-    ui.component(:chat).push({ ... })
+```ruby
+ui.component(:chat).push({ ... })
+```
 
 You can see a working example of both of these things in the [example
 app](https://github.com/bryanp/pakyow-chat).
@@ -195,21 +208,24 @@ app](https://github.com/bryanp/pakyow-chat).
 Mutators are triggered automatically when calling a mutable action. In cases
 where you want to trigger mutators without this, you can use `mutate`.
 
-    ruby:
-    ui.mutate(:user)
+```ruby
+ui.mutate(:user)
+```
 
 ## Channel Building
 
 Pakyow UI keeps track of what clients should receive what state mutations using
 realtime channels. Here's how a channel is structured:
 
-    console:
-    scope:{name};mutation{name}::{qualifiers}
+```console
+scope:{name};mutation{name}::{qualifiers}
+```
 
 In the example from the Mutators section, the subscribed channel name is:
 
-    console:
-    scope:user;mutation:list
+```console
+scope:user;mutation:list
+```
 
 This means that any client who rendered any user data with the `list` mutation
 will receive future updates in user state.
