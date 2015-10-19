@@ -1,5 +1,5 @@
 ---
-name: Sending Email
+name: Mailers
 desc: Sending email from a Pakyow app.
 ---
 
@@ -26,4 +26,4 @@ mailer.message.add_file('/path/to/file.jpg')
 mailer.deliver_to('test@pakyow.org')
 ```
 
-There are several configuration settings for Mailer. See [configuration](/docs/configuration) for more information.
+There are several configuration settings for Mailer. See [configuration](/docs/config) for more information.

@@ -3,7 +3,7 @@ name: Named Route Functions
 desc: using named route functions.
 ---
 
-Named functions are exactly that &ndash; functions that can be used as a primary function for a route. They also come into play when defining [route hooks](/docs/routing#hooks). Defining a function and referencing it in one or more route definitions is easy.
+Named functions are exactly that &ndash; functions that can be used as a primary function for a route. They also come into play when defining [route hooks](/docs/routing/hooks). Defining a function and referencing it in one or more route definitions is easy.
 
 ```ruby
 fn :foo do
@@ -28,7 +28,7 @@ This allows other route helpers to be defined that return a single or set of fun
 
 ## Route Context
 
-All functions for a particular route are evaluated in a single context. This allows state to be shared between functions, like so (use of before is covered under Route Hooks (TODO reference)):
+All functions for a particular route are evaluated in a single context. This allows state to be shared between functions, like so (use of before is covered under [Route Hooks](/docs/routing/hooks)):
 
 ```ruby
 fn :foo do

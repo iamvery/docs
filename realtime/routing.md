@@ -35,4 +35,4 @@ The application will respond with a response that resembles an HTTP response.
 
 Keep in mind that responses are asynchronous, so you must implement some way of
 handling callbacks based on message id. We make this easy with
-[Pakyow.js](/docs/js).
+[Ring](https://github.com/pakyow/ring).

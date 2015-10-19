@@ -3,7 +3,7 @@ name: RESTful APIs
 desc: Buidling RESTful APIs.
 ---
 
-Pakyow has a built-in route [template](/docs/routing#templates) for defining [RESTful APIs](http://en.wikipedia.org/wiki/Representational_state_transfer). Eight actions are supported. Here's an example:
+Pakyow has a built-in route [template](/docs/routing/templates) for defining [RESTful APIs](http://en.wikipedia.org/wiki/Representational_state_transfer). Eight actions are supported. Here's an example:
 
 ```ruby
 Pakyow::App.routes do

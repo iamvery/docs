@@ -1,5 +1,5 @@
 ---
-name: Routing Requests
+name: Routing
 desc: Routing requests in Pakyow.
 ---
 

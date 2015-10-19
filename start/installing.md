@@ -1,5 +1,5 @@
 ---
-name: Installation
+name: Download / Installing
 desc: Installing Pakyow for local development.
 ---
 

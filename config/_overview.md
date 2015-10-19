@@ -1,5 +1,5 @@
 ---
-name: Configuration Options
+name: Configuration
 desc: A full list of configuration options for Pakyow.
 ---
 

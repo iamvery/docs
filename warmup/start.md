@@ -3,7 +3,7 @@ name: Get Moving
 desc: Taking your first steps with Pakyow.
 ---
 
-First, make sure Pakyow is installed. You can find [details here](/docs/getting-started/installation).
+First, make sure Pakyow is installed. You can find [details here](/docs/getting-started/installing).
 
 Pakyow ships with command-line tools that help you generate and manage
 your projects. These tools make creating a new project really easy.

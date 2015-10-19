@@ -1,5 +1,5 @@
 ---
-name: Handling Failures
+name: Failure Handling
 desc: Handle failures in a Pakyow app.
 guide: true
 ---

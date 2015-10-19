@@ -1,5 +1,5 @@
 ---
-name: Live View Updates
+name: Auto-Updating Views
 desc: Building views that update themselves.
 ---
 
@@ -186,8 +186,7 @@ into the mutator. You can define qualifiers for any data attribute.
 
 ## Component Messages
 
-Pakyow UI provides ways to interact with browser components (discussed in the
-[Pakyow.js Library Docs](/docs/js)). Any view methods can be called, which will
+Pakyow UI provides ways to interact with browser components. Any view methods can be called, which will
 be performed on the component rendered by the browser.
 
 ```ruby

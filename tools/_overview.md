@@ -1,5 +1,5 @@
 ---
-name: Development Tools
+name: Tools
 desc: Tools for building Pakyow projects.
 ---
 
@@ -22,7 +22,7 @@ When starting the server, Pakyow will try the following handlers in order:
   - mongrel
   - webrick
 
-You can run a specific handler by setting the `server.handler` [config option](/docs/configuration).
+You can run a specific handler by setting the `server.handler` [config option](/docs/config).
 
 ## Console
 

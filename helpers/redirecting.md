@@ -9,7 +9,7 @@ Issuing a browser redirect is easy:
 redirect '/foo'
 ```
 
-Or even better, if you define your route with a name (such as :foo) the URI will be generated [automatically](/docs/routing#uri_generation):
+Or even better, if you define your route with a name (such as :foo) the URI will be generated [automatically](/docs/routing/uri-generation):
 
 ```ruby
 redirect :foo

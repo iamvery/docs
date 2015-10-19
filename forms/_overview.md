@@ -1,5 +1,5 @@
 ---
-name: Working With Forms
+name: Forms
 desc: How to use forms in Pakyow.
 guide: true
 ---
@@ -32,7 +32,7 @@ If a field already has a `name` or `value`, Pakyow will not overwrite it.
 
 ## Action / Method
 
-In the case of Restful routes, Pakyow will automatically set the form action and method based on the state of the object. For this to work, you will need to add the following code to the [bindings](/docs/bindings) for the form's scope:
+In the case of Restful routes, Pakyow will automatically set the form action and method based on the state of the object. For this to work, you will need to add the following code to the [bindings](/docs/view-logic/bindings) for the form's scope:
 
 ```ruby
 Pakyow::App.bindings do
@@ -40,7 +40,7 @@ Pakyow::App.bindings do
 end
 ```
 
-The argument to `restful` should reference the name of the [RESTful route group](/docs/routing#restful).
+The argument to `restful` should reference the name of the [RESTful route group](/docs/routing/restful).
 
 Now, when binding data to the form the action and method will be set for you and the form will submit to the right path.
 

@@ -1,5 +1,5 @@
 ---
-name: Working With Databases
+name: Databases
 desc: Using Sequel &amp; Postgres for database access.
 guide: true
 ---

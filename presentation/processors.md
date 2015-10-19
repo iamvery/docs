@@ -1,5 +1,5 @@
 ---
-name: Using Template Languages
+name: View Processors
 desc: Using processors to support multiple template languages.
 ---
 

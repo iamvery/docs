@@ -23,16 +23,17 @@ When you generate a new project, it's already setup for testing using Rspec. In
 fact, there are already two passing tests that were written for us! Run `bundle
 exec rspec` at the root of the project.
 
-    console:
-    Pakyow::App
-      when navigating to the default route
-        says hello
-        succeeds
+```
+Pakyow::App
+  when navigating to the default route
+    says hello
+    succeeds
 
-    Finished in 0.0051 seconds (files took 0.60646 seconds to load)
-    2 examples, 0 failures
+Finished in 0.0051 seconds (files took 0.60646 seconds to load)
+2 examples, 0 failures
 
-    Randomized with seed 9653
+Randomized with seed 9653
+```
 
 Take a look at the two specs in `spec/integration/app_spec.rb`.
 
@@ -54,9 +55,10 @@ everything that happens so that tests can be written against the results.
 
 Here's an example simulation:
 
-    ruby:
-    get '/' do |sim|
-      expect(sim.status).to eq(200)
-    end
+```ruby
+get '/' do |sim|
+  expect(sim.status).to eq(200)
+end
+```
 
 We'll take a look at more simulation examples in the following sections.

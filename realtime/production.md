@@ -11,7 +11,7 @@ to their connections as well. This is handled with Redis Pub/Sub.
 
 The `realtime.redis` config option is defines the Redis connection information.
 By default it's set to `{ url: 'redis://localhost:6379' }`.  Feel free to change
-it to match your environment (see [Configuration Options](/docs/configuration)).
+it to match your environment (see [Configuration Options](/docs/config)).
 
 All subscription information is stored under the `pw:channels` key by default.
 In the rare case this conflicts with another key, set the `realtime.redis_key`

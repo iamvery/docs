@@ -1,5 +1,5 @@
 ---
-name: Presenting Views
+name: Presentation
 desc: Building the presentation layer in Pakyow.
 ---
 
