@@ -1,228 +1,160 @@
 ---
-name: Start with the View
+name: Front-End Prototype
 desc: Building the front-end of your Pakyow project using view-first development.
 ---
 
-Pakyow encourages a view-first development process. The goal of this process
-is to use the app in the browser as early as possible. Pakyow accomplishes this
-by allowing a front-end developer or designer to create a navigable prototype without
-writing any back-end code. This means that even with a limited skillset, you can
-create an app that your team (and project stakeholders) can interact with.
+Pakyow encourages a [view-first development
+process](/docs/concepts/view-first-development). This process lets us build a
+navigable prototype of our project without writing any back-end code. All it
+takes is basic knowledge of HTML to create the front-end presentation layer.
 
-Views are easy in Pakyow, and are just HTML. There's no extended syntax. All of the
-benefits of traditional template languages, like layouts and partials,
-are retained.
-
-There are three parts to a view:
-
-1. Template: defines the reusable structure for a view
-2. Page: implements a template with page-specific content
-3. Partial: a reusable piece that can be included into a Page or Template
-
-View building begins with a page. When fulfilling a request, Pakyow
-first identifies the page to use based on the request path. For example,
-a request for '/' would map to the 'index.html' page.
-
-The page implements a single template. If a template isn't specified, Pakyow
-uses the default template (named `pakyow.html`). By default, all templates are
-defined in the `app/views/_templates` directory. Open the root project directory
-into a text editor and have a look around.
-
-Every Pakyow template defines one or more containers. Later on in the process,
-we'll create pages that define content for these containers. Containers are
-defined with an inline comment:
-
-```html
-<!-- @container container_name -->
-```
-
-A nameless `default` container is defined for you in the `pakyow.html`
-template. During construction, Pakyow composes page content with the
-template to create the final view sent back in the response.
-
-<p class="callout">
-You might notice the div that contains a `container-1` class. This
-class is defined in the pakyow-css library included with every generated
-app. Explaining the library is beyond the scope of this warmup, but you
-can read more <a href="http://github.com/pakyow/pakyow-css">here</a>.
+For reference, here's the front-end that we'll be creating:
 <br>
 <br>
-There are several uses of pakyow-css throughout this warmup. Anytime
-you see a class name on a node, it's safe to assume it is related to
-pakyow-css and is simply to define some default styling.
+<br>
+<img src="/images/warmup-screenshot.png" width="700" alt="Pakyow Warmup Result">
+<br>
+<br>
+
+The "active viewers" and "all time" counters will tell us how many people are
+currently on the page and the number of total views, respectively. These values,
+along with new comments, will show up as the state changes on the server. And we
+won't have to write a single line of JavaScript!
+
+## Markdown Content
+
+The first part of our view is just some text content. Let's write this in
+Markdown rather than HTML. Pakyow makes this easy with view processors. To
+install the view processor for Markdown, open `Gemfile` in a text editor and add
+this code at the end:
+
+```ruby
+gem 'pakyow-markdown'
+```
+
+Run `bundle install` at the root of the project and start the server. Now we're
+ready to write some content. Create a file named `_content.md` in the
+`app/views` directory. Write some markdown content, such as:
+
+```
+# Pakyow &ndash; Realtime Web Framework for Ruby
+
+We designed Pakyow to deliver modern realtime features in a traditional backend-driven
+architecture. Build websites and apps your users will love, using simple processes
+that will keep you smiling. It's unlike anything you've used before.
+```
+
+What we've created is a view partial, written in Markdown. Now we can include
+the partial into our page. Open up `index.html` and replace the content with the
+following HTML markup:
+
+```html
+<article>
+  <!-- @include content -->
+</article>
+```
+
+The `@include` directive tells Pakyow to replace the comment with the markup
+contained in the `content` partial. Before doing so, the Markdown view processor
+converts the Markdown into HTML code.
+
+## Traffic Counters
+
+Next we need to define the front-end for our traffic counters. Add the following
+markup between the opening and closing `<article>` tags:
+
+```html
+<div data-scope="stats">
+  <span data-prop="active">
+    1
+  </span>
+
+  <span>
+    active viewers
+  </span>
+
+  <span data-prop="total" class="margin-l">
+    2
+  </span>
+
+  <span>
+    all time
+  </span>
+</div>
+```
+
+## Comment Form / List
+
+Let's create the comment form and list. In a new `app/views/_comment-form.html`
+file, add the following markup:
+
+```html
+<form data-scope="comment">
+  <input data-prop="content" placeholder="your comment here...">
+  <input type="submit" value="post">
+</form>
+```
+
+Next, add the following markup to a new `app/views/_comment-list.html` file:
+
+```html
+<p data-scope="comment" data-version="empty">
+  no comments :(
 </p>
 
-<h2 id="creatingviews">Creating Views</h2>
-
-Let's create an index page for our app. Since we're building a Twitter
-reader, this page will contain a list of recent tweets from Twitter,
-showing the user name, avatar, and contents of each tweets. Each item
-will also link to a page that will show more details about it.
-
-Create `app/views/index.html` with the following content:
-
-```html
-<div class="container-2 margin-t">
-  <img src="http://placehold.it/50x50" class="float-l margin-r">
-
-  <a href="/show" class="float-r">
-    View Details
-  </a>
-
-  <h4>
-    User's Name
-  </h4>
-
-  <p>
-    Tweet text goes here
+<article data-scope="comment">
+  <p data-prop="content">
+    Comment Goes Here
   </p>
-</div>
+</article>
 ```
 
-Reload the browser and you'll see the code we added. Huzzah!
-
-Clicking on the view details link takes us to a broken page, so let's
-fix that. Create `app/views/show.html` with the following content:
+Finally, include both of these partials into `index.html`. The contents of the
+file should now look like this:
 
 ```html
-<a href="/">
-  Back to list
-</a>
+<article>
+  <!-- @include content -->
 
-<div class="margin-t">
-  <img src="http://placehold.it/50x50" class="float-l margin-r">
+  <div data-scope="stats">
+    <span data-prop="active">
+      1
+    </span>
 
-  <h4>
-    User's Name
-  </h4>
+    <span>
+      active viewers
+    </span>
 
-  <p>
-    Tweet text goes here
-  </p>
+    <span data-prop="total" class="margin-l">
+      2
+    </span>
 
-  <p>
-    Retweeted n times;
-    Favorited n times;
-    <a href="#">
-      View on twitter
-    </a>
-  </p>
-</div>
+    <span>
+      all time
+    </span>
+  </div>
+
+  <!-- @include comment-form -->
+  <!-- @include comment-list -->
+</article>
 ```
 
-Reload the browser and you'll see the new view.
+## Scopes &amp; Props
 
-The final thing this app needs is an explanation. Let's use another aspect of
-view building, partials, to add this to our index view. First, define
-content for the partial by creating a `_intro.html` file in the `app/views`
-directory with the following content:
+You'll notice the `data-scope` and `data-prop` attributes on some of the nodes.
+This pattern allows us to label specific nodes as representing the underlying
+data of our application.
 
-```html
-<h1 class="divide">
-  Pakyow Warmup
-</h1>
+You can think of a scope as representing a particular data type and a prop
+representing an attribute of a type. In the comment list case, the node
+containing `data-scope="comment"` represents data of type `post`, and the node
+with `data-prop="title"` represents the `title` of a `post`. 
 
-<p>
-  Just a fun little warmup using <a href="http://pakyow.org">Pakyow</a>.
-</p>
-```
+Building in this knowledge of state into the view is a fundamental concept in
+Pakyow. We'll see why in the next few sections when we add the back-end code.
 
-Next, include the partial into the index page by adding this HTML
-to the top of `index.html`:
+## Front-End Wrapup
 
-```html
-<!-- @include intro -->
-```
-
-Reload the index page in your browser and you'll see the intro has been
-composed into the template. This intro could be included into any page,
-such as `show.html`. Create it once, use it many times!
-
-<h2 id="data">Data Knowledge</h2>
-
-At this point we have created a navigable prototype of our app, and we
-didn't write a single line of back-end code! The next step is to build
-the back-end that will populate our views with data. None of this
-back-end code will be mixed in to our view. Instead, it will be added
-as a layer that interacts with our view.
-
-For this to work we want the view to describe the data it intends to
-present. Looking at the `index.html` view it's pretty easy to identify the
-data that's being represented. For example, we can see that the `div`
-represents a tweet. Since this is a *type* of data we label it as a scope:
-
-```html
-<div data-scope="tweet" class="container-2 margin-t">
-```
-
-We also know the `img` will present an avatar. Since this is an
-*attribute* of a tweet, we label it as a prop:
-
-```html
-<img data-prop="avatar" src="http://placehold.it/50x50" class="float-l margin-r">
-```
-
-We continue labeling significant nodes (show link, user name, and text)
-and end up with the following code:
-
-```html
-<!-- @include intro -->
-
-<div data-scope="tweet" class="container-2 margin-t">
-  <img data-prop="avatar" src="http://placehold.it/50x50" class="float-l margin-r">
-
-  <a data-prop="show" href="/show" class="float-r">
-    View Details
-  </a>
-
-  <h4 data-prop="user">
-    User's Name
-  </h4>
-
-  <p data-prop="text">
-    Tweet text goes here
-  </p>
-</div>
-```
-
-These attributes gives Pakyow the knowledge it needs to properly apply our
-data to the view. Pakyow keeps the view completely separate from the
-back-end, allowing the front-end to fully define how the data in the
-application should be presented. If you haven't already, add the scopes
-and props to your `index.html` view. Let's also describe the data presented
-by `show.html`:
-
-```html
-<a href="/">
-  Back to list
-</a>
-
-<div data-scope="tweet" class="margin-t">
-  <img data-prop="avatar" src="http://placehold.it/50x50" class="float-l margin-r">
-
-  <h4 data-prop="user">
-    User's Name
-  </h4>
-
-  <p data-prop="text">
-    Tweet text goes here
-  </p>
-
-  <p>
-    Retweeted <span data-prop="retweet_count">n</span> times;
-    Favorited <span data-prop="favorite_count">n</span> times;
-    <a data-prop="twitter" href="#">
-      View on twitter
-    </a>
-  </p>
-</div>
-```
-
-<h2 id="front-end">Front-End Wrapup</h2>
-
-At this point we've done the following:
-
-1. Created a navigable prototype of our application
-2. Made our views knowledgable of the data they will present
-
-Click around, admire our progress, and let's move on.
+That's all there is to it! In just a few minutes, we prototyped the front-end of
+our project, writing only HTML and Markdown. Next, we'll add the back-end and
+render our view with real data.

@@ -1,77 +1,58 @@
 ---
-name: Deploy to Heroku
+name: Heroku Deployment
 desc: Deploying your Pakyow project to Heroku.
 ---
 
-We'll be deploying our application to Heroku. The process is
-summarized below, but you can read about this in more detail
-[here](https://devcenter.heroku.com/articles/git).
+It's time to deploy our warmup project to Heroku!
 
-First, our code must be in version control. Initialize a Git repository:
+First, our code must be in version control. Initialize a Git repository by
+running the following command:
 
 ```console
 git init
-Initialized empty Git repository in .git
 ```
 
-Stage the new files:
+Now, stage the project files:
 
 ```console
 git add .
 ```
 
-And commit the staged files:
+And commit them:
 
 ```console
 git commit -m "initial commit"
-[master (root-commit) d483d20] initial commit
- 24 files changed, 1306 insertions(+)
- create mode 100644 Gemfile
- create mode 100644 Gemfile.lock
- create mode 100644 README.md
- create mode 100644 app.rb
- create mode 100644 app/lib/bindings.rb
- create mode 100644 app/lib/helpers.rb
- create mode 100644 app/lib/routes.rb
- create mode 100644 app/views/_intro.md
- create mode 100644 app/views/_templates/pakyow.html
- create mode 100644 app/views/index.html
- create mode 100644 app/views/show.html
- create mode 100644 config.ru
- create mode 100755 public/css/pakyow-css/CHANGES
- create mode 100755 public/css/pakyow-css/README.md
- create mode 100755 public/css/pakyow-css/VERSION
- create mode 100755 public/css/pakyow-css/examples/extension.css
- create mode 100755 public/css/pakyow-css/examples/structure-fluid.html
- create mode 100755 public/css/pakyow-css/examples/structure.html
- create mode 100755 public/css/pakyow-css/examples/styled.html
- create mode 100755 public/css/pakyow-css/reset.css
- create mode 100755 public/css/pakyow-css/structure.css
- create mode 100755 public/css/pakyow-css/style.css
- create mode 100755 public/css/pakyow-css/syntax.css
- create mode 100644 public/favicon.ico
- create mode 100644 rakefile
- ```
+```
 
-Your project is all ready to deploy! If you don't already have a Heroku
-account, create one [here](https://api.heroku.com/signup/devcenter).
-Then [install the toolbelt](https://toolbelt.heroku.com/).
+Your project is ready to deploy! If you don't already have a Heroku account,
+create one [here](https://api.heroku.com/signup/devcenter). Then [install the
+toolbelt](https://toolbelt.heroku.com/) so you have the appropriate command-line
+deployment tools.
 
-Next, create your Heroku application (follow any prompts you receive):
+Next, create your Heroku environment (following any prompts you receive):
 
 ```console
 heroku create
 ```
 
-Make a note of the outputted URL, this is how you will access your app.
-Finally, push the code to Heroku:
+Add Redis to the Heroku environment:
+
+```console
+heroku addons:create heroku-redis:hobby-dev
+```
+
+Finally, push the project code up to Heroku:
 
 ```console
 git push heroku master
 ```
 
-Go to the app URL and find your app running in the cloud!
+Over the next minute or two, Heroku will build the project and make it available
+for use. When it's finished, type the following command to open your Pakyow
+project in a web browser:
 
 ```console
 heroku open
 ```
+
+Celebrate. Hug your cat. You deserve it!
