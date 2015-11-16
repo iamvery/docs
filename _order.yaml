@@ -1,5 +1,6 @@
 - start
 - concepts
+- warmup
 - presentation
 - routing
 - view_logic
@@ -10,7 +11,6 @@
 - config
 - helpers
 - tools
-- warmup
 - data
 - forms
 - failure
