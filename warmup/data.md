@@ -36,14 +36,14 @@ end
 
 ## Configuring Redis for Production
 
-Thinking ahead a bit, we'll need to access our Redis instance once deployed to
-Heroku. This is exposed via the `REDIS_URL` environment variable. Open up
-`app/setup.rb` and replace the `configure :production` block with the
+Thinking ahead a bit, we'll need to access our production Redis instance once
+deployed to Heroku. This is exposed via the `REDIS_URL` environment variable.
+Open up `app/setup.rb` and replace the `configure :production` block with the
 following production configuration code:
 
 ```ruby
 configure :production do
-  realtime.redis = ENV['REDIS_URL']
+  realtime.redis = { url: ENV['REDIS_URL'] }
 end
 ```
 

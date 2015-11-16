@@ -6,7 +6,8 @@ desc: Building the front-end of your Pakyow project using view-first development
 Pakyow encourages a [view-first development
 process](/docs/concepts/view-first-development). This process lets us build a
 navigable prototype of our project without writing any back-end code. All it
-takes is basic knowledge of HTML to create the front-end presentation layer.
+takes is basic knowledge of HTML to create the front-end presentation layer that
+you, along with any stakeholders, can use within a web browser.
 
 For reference, here's the front-end that we'll be creating:
 <br>
@@ -23,7 +24,7 @@ won't have to write a single line of JavaScript!
 
 ## Markdown Content
 
-The first part of our view is just some text content. Let's write this in
+The first part of our view is just plaintext content. Let's write this in
 Markdown rather than HTML. Pakyow makes this easy with view processors. To
 install the view processor for Markdown, open `Gemfile` in a text editor and add
 this code at the end:
@@ -32,9 +33,10 @@ this code at the end:
 gem 'pakyow-markdown'
 ```
 
-Run `bundle install` at the root of the project and start the server. Now we're
-ready to write some content. Create a file named `_content.md` in the
-`app/views` directory. Write some markdown content, such as:
+Stop the server with `Ctrl-C` and run `bundle install` at the root of the
+project. Then start the server. Now we're ready to write our content. Create a
+file named `_content.md` in the `app/views` directory. Write some markdown
+content, maybe something like this:
 
 ```
 # Pakyow &ndash; Realtime Web Framework for Ruby
@@ -54,14 +56,21 @@ following HTML markup:
 </article>
 ```
 
-The `@include` directive tells Pakyow to replace the comment with the markup
-contained in the `content` partial. Before doing so, the Markdown view processor
-converts the Markdown into HTML code.
+Pakyow extends HTML with a few features that make it easy to avoid duplication
+and reuse parts of the front-end code throughout a project. The `@include`
+directive tells Pakyow to replace the comment with the markup contained in the
+`content` partial we created in the previous step. Before doing so, the Markdown
+view processor converts the Markdown into HTML code. The result is an HTML
+document composed from multiple sources.
+
+Take a minute to refresh your browser so you can see the rendered content. Cool,
+huh?
 
 ## Traffic Counters
 
-Next we need to define the front-end for our traffic counters. Add the following
-markup between the opening and closing `<article>` tags:
+Next, we need to define the front-end for our traffic counters. Add the
+following markup between the opening and closing `<article>` tags, after the
+`include` comment:
 
 ```html
 <div data-scope="stats">
@@ -83,13 +92,16 @@ markup between the opening and closing `<article>` tags:
 </div>
 ```
 
+Refresh your browser and you'll see the new counters.
+
 ## Comment Form / List
 
-Let's create the comment form and list. In a new `app/views/_comment-form.html`
-file, add the following markup:
+Now let's build the form a user would use to create a comment, along with a
+comments list. In a new `app/views/_comment-form.html` file, add the following
+markup:
 
 ```html
-<form data-scope="comment">
+<form data-scope="comment" class="margin-t">
   <input data-prop="content" placeholder="your comment here...">
   <input type="submit" value="post">
 </form>
@@ -139,22 +151,28 @@ file should now look like this:
 </article>
 ```
 
+Refresh your browser one more time and you'll see the completed prototype of our
+simple web app. Nothing works yet, but it's enough to understand the larger
+picture of what we're building.
+
 ## Scopes &amp; Props
 
-You'll notice the `data-scope` and `data-prop` attributes on some of the nodes.
-This pattern allows us to label specific nodes as representing the underlying
-data of our application.
+You'll notice the `data-scope` and `data-prop` attributes on a few of the nodes.
+This pattern allows us to label the specific nodes that represent the underlying
+data of our app.
 
 You can think of a scope as representing a particular data type and a prop
 representing an attribute of a type. In the comment list case, the node
 containing `data-scope="comment"` represents data of type `post`, and the node
-with `data-prop="title"` represents the `title` of a `post`. 
+with `data-prop="title"` represents the `title` property of a `post`.
 
-Building in this knowledge of state into the view is a fundamental concept in
-Pakyow. We'll see why in the next few sections when we add the back-end code.
+Building this knowledge of state into the view is a fundamental concept in
+Pakyow. We'll see why this is so important in the next few sections as we add
+the back-end code to power our presentation layer.
 
 ## Front-End Wrapup
 
-That's all there is to it! In just a few minutes, we prototyped the front-end of
-our project, writing only HTML and Markdown. Next, we'll add the back-end and
-render our view with real data.
+That's all there is to building a front-end prototype in Pakyow! It only took a
+few minutes, and we only had to write a bit of HTML and Markdown. Next, we'll
+add the back-end code. And here's a spoiler: we won't have to touch our views
+again!

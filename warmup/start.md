@@ -3,12 +3,12 @@ name: Get Moving
 desc: Taking your first steps with Pakyow.
 ---
 
-First, make sure Pakyow is installed. You can find [details
-here](/docs/start/installing).
+First, please make sure Pakyow is installed on your local system. You can find
+[details here](/docs/start/installing).
 
-Pakyow ships with command-line tools that help you generate and manage your
-projects. These tools make creating a new project really easy. Open up a
-terminal prompt and create a project:
+Pakyow ships with a few command-line tools that help you generate and manage
+your projects. These tools make creating a new project really easy. Open up a
+terminal prompt and create a new project:
 
 ```console
 pakyow new warmup
@@ -59,12 +59,12 @@ Done! Run `cd warmup; pakyow server` to get started!
 ```
 
 Pakyow creates the entire project structure for us, allowing us to get right to
-work. Move into the new `warmup` directory (`cd warmup`) and start the app
-server with the following command:
+work. Move into the new `warmup` directory by typing `cd warmup` and then start
+the server with the following command:
 
 ```console
 bundle exec pakyow server
 ```
 
-Go to [localhost:3000](http://localhost:3000) in a web browser to see your brand
-new project running!
+Go to [localhost:3000](http://localhost:3000) in a web browser to see your
+project running!
