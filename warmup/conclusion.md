@@ -12,5 +12,5 @@ As a community, we'd like to personally invite you to get involved with the
 Pakyow project. The Pakyow community is inclusive and passionate about making it
 possible for more people to build for the web. We're all here to help each other
 in any way we can. Head on over to the
-[Community](http://localhost:3000/get-involved) page to learn more about how to
+[Community](/get-involved) page to learn more about how to
 get involved. We look forward to hearing from you!
