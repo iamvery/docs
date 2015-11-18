@@ -112,7 +112,7 @@ Here's the `/nested/_reusable` partial:
 
 ```html
 nested reusable
-``
+```
 
 When composed at `/`, Presenter will use the `/_reusable` partial, resulting in
 this composed view (intentionally leaving the template out of this):
