@@ -19,7 +19,7 @@ tests are written in. For detailed instructions on setting things up or using a
 different testing library, [click
 here](https://github.com/pakyow/pakyow/tree/master/pakyow-test).
 
-When you generate a new project, it's already setup for testing using Rspec. In
+When you generate a new project, it's already setup for testing using RSpec. In
 fact, there are already two passing tests that were written for us! Run `bundle
 exec rspec` at the root of the project.
 
