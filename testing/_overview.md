@@ -13,7 +13,7 @@ layer of a project, something that is typically very difficult in web-based
 frameworks. These presentation tests make it possible to know exactly what views
 are being presented, along with the specific data being presented by each view.
 
-> [Rspec](https://github.com/rspec/rspec) is the testing library we recommend for
+> [RSpec](https://github.com/rspec/rspec) is the testing library we recommend for
 use in Pakyow projects. It's also what all of the internal Pakyow framework
 tests are written in. For detailed instructions on setting things up or using a
 different testing library, [click
