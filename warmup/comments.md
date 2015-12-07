@@ -74,7 +74,7 @@ view.partial(:'comment-form').scope(:comment).bind({})
 First we render our comment list with our comments data and then subscribe it to
 future state changes. Next we bind an empty object to the comment form, so that
 Pakyow will setup the form for creating a new comment. This might seem odd, but
-wil make more sense in a moment.
+will make more sense in a moment.
 
 Next, let's define the restful route for comment creation. Add the following
 code after the default route:
