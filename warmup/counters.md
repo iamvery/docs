@@ -44,7 +44,7 @@ Pakyow::App.mutable :stats do
 end
 ```
 
-The first three lines setup the initial value for active viewers with the
+The first three lines setup the initial value for active viewers when the
 application first starts up. Next, the mutable is defined with a query and three
 actions.
 
