@@ -47,7 +47,7 @@ that will keep you smiling. It's unlike anything you've used before.
 ```
 
 What we've created is a view partial, written in Markdown. Now we can include
-the partial into our page. Open up `index.html` and replace the content with the
+the partial into our page. Open up `app/views/index.html` and replace the content with the
 following HTML markup:
 
 ```html

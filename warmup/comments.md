@@ -53,7 +53,7 @@ values in.
 When we apply an empty collection of comments, `apply` will simply render the
 default version of the scope. If the collection contains one or more comments,
 it will create a copy of the comment scope for each comment. The result is that
-the view will alway contain the same number of elements as the collection being
+the view will always contain the same number of elements as the collection being
 applied, while providing some convenience around handling empty collections.
 
 ## Routing
@@ -119,7 +119,7 @@ Fortunately the Pakyow client library, Ring, gives us a way to avoid this. Open
 form node:
 
 ```html
-<form data-scope="comment" data-ui="mutable">
+<form data-scope="comment" class="margin-t" data-ui="mutable">
 ```
 
 This attaches a ui component named `mutable` to the form node. The mutable
