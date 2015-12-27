@@ -6,8 +6,9 @@ desc: Starting the Pakyow server.
 Pakyow includes a tool for running projects locally during development. To start the
 server, run the following command in terminal from the main directory of your project:
 
-```console
-pakyow server
+```
+cd your-app-name-here
+console pakyow server
 ```
 
 You should see some ouput similar to this:
