@@ -14,9 +14,6 @@ bash <(curl -s https://raw.githubusercontent.com/pakyow/pakyow-deps/master/check
 
 ## Install Ruby
 
-Windows users:
-  - Use [RubyInstaller](http://rubyinstaller.org/)
-
 Mac users:
   - Mac OS X comes with Ruby, but it probably isn't new enough.
   - Install [Homebrew](http://brew.sh/)
@@ -33,10 +30,12 @@ Linux users:
 
   `sudo yum install ruby`
 
+Windows users:
+- Use [RubyInstaller](http://rubyinstaller.org/)
+
+
 ## Install RubyGems
 
-Windows users:
-  - [RubyInstaller](http://rubyinstaller.org/) also installs RubyGems
 
 Mac users:
   - [Homebrew](http://brew.sh/) installs RubyGems when installing Ruby
@@ -48,6 +47,9 @@ Linux users:
   - For CentOS/Red Hat/Fedora:
 
   `sudo yum install rubygems`
+
+Windows users:
+- [RubyInstaller](http://rubyinstaller.org/) also installs RubyGems
 
 ## Install Pakyow
 
