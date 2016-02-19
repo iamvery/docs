@@ -55,7 +55,7 @@ Using rspec-mocks 3.4.0
 Using rspec 3.4.0
 Bundle complete! 4 Gemfile dependencies, 30 gems now installed.
 Use `bundle show [gemname]` to see where a bundled gem is installed.
-Done! Run `cd warmup; pakyow server` to get started!
+Done! Run `cd warmup; bundle exec pakyow server` to get started!
 ```
 
 Pakyow creates the entire project structure for us, allowing us to get right to

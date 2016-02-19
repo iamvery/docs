@@ -163,7 +163,7 @@ Let's create a view that we'll use to present our users. Create an `index.html` 
 </div>
 ```
 
-Run `pakyow server` to start the server, then navigate to [localhost:3000](http://localhost:3000) to see the new view prototype. Now let's bind our user data to it. Open `app/lib/routes.rb` and define a default route. Here's what it should look like:
+Run `bundle exec pakyow server` to start the server, then navigate to [localhost:3000](http://localhost:3000) to see the new view prototype. Now let's bind our user data to it. Open `app/lib/routes.rb` and define a default route. Here's what it should look like:
 
 ```ruby
 Pakyow::App.routes do

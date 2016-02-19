@@ -24,6 +24,18 @@ When starting the server, Pakyow will try the following handlers in order:
 
 You can run a specific handler by setting the `server.handler` [config option](/docs/config).
 
+> Elsewhere in this documentation, you'll always see pakyow server executed like this:
+>
+>```console
+>bundle exec pakyow server [environment]
+>```
+>
+>The reasons for this are laid out on the [Bundler home page](http://bundler.io/ "Bundler home page"):
+>
+>>In some cases, running executables without `bundle exec` may work, if the executable happens to be installed in your system and does not pull in any gems that conflict with your bundle.
+>>
+>>However, this is unreliable and is the source of considerable pain. Even if it looks like it works, it may not work in the future or on another machine.
+
 ## Console
 
 The console command loads an application into a REPL (like IRB).

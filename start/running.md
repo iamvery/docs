@@ -7,7 +7,7 @@ Pakyow includes a tool for running projects locally during development. To start
 server, run the following command in terminal from the main directory of your project:
 
 ```console
-pakyow server
+bundle exec pakyow server
 ```
 
 You should see some ouput similar to this:
