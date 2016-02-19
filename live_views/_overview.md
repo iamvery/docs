@@ -216,13 +216,13 @@ ui.mutate(:user)
 Pakyow UI keeps track of what clients should receive what state mutations using
 realtime channels. Here's how a channel is structured:
 
-```console
+```
 scope:{name};mutation{name}::{qualifiers}
 ```
 
 In the example from the Mutators section, the subscribed channel name is:
 
-```console
+```
 scope:user;mutation:list
 ```
 

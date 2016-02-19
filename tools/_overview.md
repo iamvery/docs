@@ -9,7 +9,7 @@ Pakyow provides several tools useful during development.
 
 The server command runs a local instance of a Pakyow application.
 
-```console
+```
 pakyow server [environment]
 ```
 
@@ -26,7 +26,7 @@ You can run a specific handler by setting the `server.handler` [config option](/
 
 > Elsewhere in this documentation, you'll always see pakyow server executed like this:
 >
->```console
+>```
 >bundle exec pakyow server [environment]
 >```
 >
@@ -40,13 +40,13 @@ You can run a specific handler by setting the `server.handler` [config option](/
 
 The console command loads an application into a REPL (like IRB).
 
-```console
+```
 pakyow console [environment]
 ```
 
 If environment is not specified, the `default_environment` defined in the app will be used. Once started, you can execute Ruby code against your app. If a file is changed, the session can be reloaded, like so:
 
-```console
+```
 reload
 Reloading...
 ```
@@ -55,7 +55,7 @@ Reloading...
 
 Several rake tasks are included with the `pakyow-rake` gem. To use them, add `pakyow-rake` to your `Gemfile` and require it at the top of `Rakefile`. Here's a list of tasks it adds to your app:
 
-```console
+```
 rake --tasks
 rake pakyow:bindings[view_path]  # List bindings across all views, or a specific view path
 rake pakyow:prepare              # Prepare the app by configuring and loading code

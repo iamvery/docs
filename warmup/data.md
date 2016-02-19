@@ -12,7 +12,7 @@ hooking into it is relatively straight-forward.
 Make sure you have Redis installed on your local machine. If you use Homebrew
 and OSX, it's easy:
 
-```console
+```
 brew install redis
 ```
 
