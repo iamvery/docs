@@ -8,7 +8,7 @@ server, run the following command in terminal from the main directory of your pr
 
 ```
 cd your-app-name-here
-pakyow server
+bundle exec pakyow server
 ```
 
 You should see some ouput similar to this:

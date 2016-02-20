@@ -36,7 +36,7 @@ Using pakyow 0.9.1
 Using puma 2.10.2
 Your bundle is complete!
 Use `bundle show [gemname]` to see where a bundled gem is installed.
-Done! Run `cd my-app; pakyow server` to get started!
+Done! Run `cd my-app; bundle exec pakyow server` to get started!
 ```
 
 Pakyow has generated a project in a new directory and installed

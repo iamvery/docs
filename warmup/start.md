@@ -10,13 +10,13 @@ Pakyow ships with a few command-line tools that help you generate and manage
 your projects. These tools make creating a new project really easy. Open up a
 terminal prompt and create a new project:
 
-```console
+```
 pakyow new warmup
 ```
 
 You should see output similar to this:
 
-```console
+```
 Generating project: warmup
 Running `bundle install` in /Users/bryanp/Desktop/warmup
 Fetching gem metadata from https://rubygems.org/...........
@@ -55,14 +55,14 @@ Using rspec-mocks 3.4.0
 Using rspec 3.4.0
 Bundle complete! 4 Gemfile dependencies, 30 gems now installed.
 Use `bundle show [gemname]` to see where a bundled gem is installed.
-Done! Run `cd warmup; pakyow server` to get started!
+Done! Run `cd warmup; bundle exec pakyow server` to get started!
 ```
 
 Pakyow creates the entire project structure for us, allowing us to get right to
 work. Move into the new `warmup` directory by typing `cd warmup` and then start
 the server with the following command:
 
-```console
+```
 bundle exec pakyow server
 ```
 

@@ -8,7 +8,7 @@ the [Ruby](http://www.ruby-lang.org) programming language.
 You can check the state of your system by running this
 command in your terminal:
 
-```console
+```
 bash <(curl -s https://raw.githubusercontent.com/pakyow/pakyow-deps/master/check.sh)
 ```
 
@@ -55,7 +55,7 @@ Windows users:
 
 Once everything checks out, install Pakyow via RubyGems:
 
-```console
+```
 gem install pakyow
 ```
 
