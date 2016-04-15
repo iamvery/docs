@@ -26,7 +26,7 @@ won't have to write a single line of JavaScript!
 
 The first part of our view is just plaintext content. Let's write this in
 Markdown rather than HTML. Pakyow makes this easy with view processors. To
-install the view processor for Markdown, open `Gemfile` in a text editor and add
+install the view processor for Markdown, open the `Gemfile` file (./warmup/Gemfile) in a text editor and add
 this code at the end:
 
 ```ruby
@@ -63,13 +63,13 @@ directive tells Pakyow to replace the comment with the markup contained in the
 view processor converts the Markdown into HTML code. The result is an HTML
 document composed from multiple sources.
 
-Take a minute to refresh your browser so you can see the rendered content. Cool,
+Take a minute to restart your server and refresh your browser so you can see the rendered content. Cool,
 huh?
 
 ## Traffic Counters
 
-Next, we need to define the front-end for our traffic counters. Add the
-following markup between the opening and closing `<article>` tags, after the
+Next, we need to define the front-end for our traffic counters. 
+Add the following markup between the opening and closing `<article>` tags of `app/views/index.html`, after the
 `include` comment:
 
 ```html
@@ -97,7 +97,7 @@ Refresh your browser and you'll see the new counters.
 ## Comment Form / List
 
 Now let's build the form a user would use to create a comment, along with a
-comments list. In a new `app/views/_comment-form.html` file, add the following
+comments list. Create a new `app/views/_comment-form.html` file, add the following
 markup:
 
 ```html
@@ -107,7 +107,7 @@ markup:
 </form>
 ```
 
-Next, add the following markup to a new `app/views/_comment-list.html` file:
+Next, create a new `app/views/_comment-list.html` file and add the following markup:
 
 ```html
 <p data-scope="comment" data-version="empty">
@@ -121,7 +121,7 @@ Next, add the following markup to a new `app/views/_comment-list.html` file:
 </article>
 ```
 
-Finally, include both of these partials into `index.html`. The contents of the
+Finally, include both of these partials in your `index.html` file. The contents of the
 file should now look like this:
 
 ```html
@@ -151,7 +151,7 @@ file should now look like this:
 </article>
 ```
 
-Refresh your browser one more time and you'll see the completed prototype of our
+With your server still running, refresh your browser one more time and you'll see the completed prototype of our
 simple web app. Nothing works yet, but it's enough to understand the larger
 picture of what we're building.
 
