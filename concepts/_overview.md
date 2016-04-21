@@ -3,33 +3,27 @@ name: Concepts
 desc: Learn about Pakyow concepts.
 ---
 
-Pakyow is a brand new approach to building websites and web apps. Its primary
-goal is to be a framework that anyone can use, despite their level of
-experience. At the same time, we strive to make Pakyow a serious contender in
-the crowded world of web-based frameworks.
+Pakyow introduces several new concepts to the web development space.
 
-## Rationale
+**View-First Development**
 
-Pakyow was born to fill the gap between a traditional, server-rendered approach
-(e.g. Ruby on Rails) and a more modern, client-side approach (e.g. Ember.js).
+Pakyow enforces total separation between the presentation layer and logic of an
+application. This makes the codebase clearer, improves performance, and enables
+features such as auto-updating views.
 
-Many projects don't fit well into either approach and instead use a hybrid
-client / server approach, with some aspects being rendered on the server and
-some on the client. This forces business logic to be located both on the server
-and on the client, increasing complexity.
+- [Read more about view-first development](/docs/overview/view-first-development)
 
-The hybrid approach, as well as a full client-side approach, also fail to
-deliver in terms of progressive enhancement. Because the view is not fully
-rendered before being presented in the browser, the experience does not degrade
-well when JavaScript is unavailable for some reason.
+**Simple State Propagation**
 
-**This breaks the web**.
+Pakyow uses simple state propagation to send state changes from an originating
+client to the server, then distribute the change among other connected clients.
 
-Websites and web apps that prioritize content should also prioritize progressive
-enhancement. Isomorphic JavaScript, where code runs both on the server and the
-client, promises to answer this problem, but always seems like an afterthought.
+- [Read more about simple state propagation](/docs/overview/simple-state-propagation)
 
-Pakyow makes it possible to build traditional, server-driven websites and web
-apps that perform for the modern web. All business logic stays on the server,
-the experience degrades well, all while still offering modern features such as
-auto-updating views (when everything is working).
+**View Transformation Protocol**
+
+Pakyow implements the view transformation protocol to perform initial rendering
+on the server and in Ring.js for client-side updates without a refresh.
+
+- [Read more the view transformation protocol](/docs/overview/view-transformation-protocol)
+
