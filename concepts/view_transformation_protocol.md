@@ -26,7 +26,7 @@ data << { id: 1, content: 'one' }
 data << { id: 2, content: 'two' }
 data << { id: 3, content: 'three' }
 
-view.scope(:post).apply(content)
+view.scope(:post).apply(data)
 ```
 
 The view rendering can be represented by this bit of JSON:
