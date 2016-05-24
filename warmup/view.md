@@ -13,7 +13,7 @@ For reference, here's the front-end that we'll be creating:
 <br>
 <br>
 <br>
-<img src="/images/warmup-screenshot.png" width="700" alt="Pakyow Warmup Result">
+<img src="//pakyow.org/images/warmup-screenshot__1baf0d0ba1f747b87a4f0f5de669b10e.png" width="700" alt="Pakyow Warmup Result">
 <br>
 <br>
 
