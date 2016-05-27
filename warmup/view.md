@@ -163,8 +163,8 @@ data of our app.
 
 You can think of a scope as representing a particular data type and a prop
 representing an attribute of a type. In the comment list case, the node
-containing `data-scope="comment"` represents data of type `post`, and the node
-with `data-prop="title"` represents the `title` property of a `post`.
+containing `data-scope="comment"` represents data of type `comment`, and the node
+with `data-prop="title"` represents the `title` property of a `comment`.
 
 Building this knowledge of state into the view is a fundamental concept in
 Pakyow. We'll see why this is so important in the next few sections as we add
