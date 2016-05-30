@@ -133,7 +133,7 @@ nested reusable
 
 Because there is no `/nested/index` page, Presenter falls back to `/index`. But
 it composes the `/nested/_reusable` partial since it is considered to be *more
-specific*. This provides unprecendted flexibility in how you define your views.
+specific*. This provides unprecedented flexibility in how you define your views.
 
 ## Templates
 
