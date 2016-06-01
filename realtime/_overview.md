@@ -96,7 +96,7 @@ window.socket.onopen = function (event) {
 
 window.socket.onmessage = function (evt) {
   console.log('socket message');
-  console.log(JSON.parse(evt.data);data);
+  console.log(JSON.parse(evt.data));
 };
 ```
 
