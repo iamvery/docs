@@ -36,7 +36,7 @@ socket.subscribe(:chan1, :chan2)
 To unsubscribe a client socket from one or more channels, use `unsubscribe`.
 
 ```ruby
-socket.subscribe(:chan2)
+socket.unsubscribe(:chan2)
 ```
 
 That's all there is to it!
